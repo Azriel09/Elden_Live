@@ -18,3 +18,12 @@
     height: 100px;
   }
 }
+@media only screen and (min-width: 2160px) {
+  .sidebar-container {
+    .toggle-img {
+      margin-top: 150px;
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
