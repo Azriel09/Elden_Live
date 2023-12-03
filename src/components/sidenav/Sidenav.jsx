@@ -30,7 +30,7 @@ export default function Sidenav() {
         onBackdropClick={() => setToggled(false)}
         toggled={toggled}
         breakPoint="all"
-        width="350px"
+        width="20%"
         style={{
           borderRightWidth: "0",
         }}
