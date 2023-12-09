@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, Link } from "react-router-dom";
 import { IconButton } from "@mui/material";
 import {
   GuraIcon,
@@ -21,9 +21,13 @@ export default function Sidenav() {
   const handleToggle = (e) => {
     setToggled(!toggled);
     setSelectedTalent(e.target.innerText);
-    navigate("/deaths");
+   
   };
 
+  const iconsArray = [AmeIcon,GuraIcon, IrysIcon, CalliIcon, InaIcon, KroniiIcon]
+
+  const names = ["Amelia Watson", "Gawr Gura", "IRyS", "Mori Calliope", "Ninomae Ina'nis", "Ouro Kronii"]
+  
   return (
     <div className="sidebar-container">
       <Sidebar
@@ -56,25 +60,10 @@ export default function Sidenav() {
           <MenuItem disabled></MenuItem>
           <div className="nav-section">Death Timestamps</div>
           <SubMenu label="Hololive EN">
-            {" "}
-            <MenuItem onClick={(e) => handleToggle(e)} icon={<AmeIcon />}>
-              Amelia Watson
-            </MenuItem>
-            <MenuItem onClick={(e) => handleToggle(e)} icon={<GuraIcon />}>
-              Gawr Gura
-            </MenuItem>
-            <MenuItem onClick={(e) => handleToggle(e)} icon={<IrysIcon />}>
-              IRyS
-            </MenuItem>
-            <MenuItem onClick={(e) => handleToggle(e)} icon={<CalliIcon />}>
-              Mori Calliope
-            </MenuItem>
-            <MenuItem onClick={(e) => handleToggle(e)} icon={<InaIcon />}>
-              Ninomae Ina&apos;nis
-            </MenuItem>
-            <MenuItem onClick={(e) => handleToggle(e)} icon={<KroniiIcon />}>
-              Ouro Kronii
-            </MenuItem>
+            {iconsArray.map((Component, i) => (
+               <MenuItem onClick={(e) => handleToggle(e)} icon={<Component/>} component={<Link to="/deaths"/>}>{names[i]}</MenuItem> 
+            ))}
+    
           </SubMenu>
         </Menu>
       </Sidebar>
