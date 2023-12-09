@@ -7,7 +7,7 @@ export default function Player() {
     const handleClick = () => {
         fetch(url)
         .then((response) => response.text())
-        .then((csvText) => console.log(csvText))
+        .then((csvText) => handleResponse(csvText))
         .catch((err) => {
           console.log(err.message);
         });
@@ -17,7 +17,7 @@ export default function Player() {
       }
       function csvToObjects(csv) {
         const csvRows = csv.split("\n");
-    
+      
         let objects = [];
         let timestamp = [];
         let killah = [];
@@ -39,7 +39,7 @@ export default function Player() {
             }
           }
         }
-        console.log(killah)
+        console.log(csvRows)
   
    
     
