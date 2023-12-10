@@ -16,7 +16,6 @@ export default function DeathsContainer() {
   const [streamSelected, setStreamSelected] = useState();
   useEffect(() => {
     if (!selectedTalent) {
-      
       navigate("/");
     }
   }, []);
@@ -44,9 +43,10 @@ export default function DeathsContainer() {
 
   return (
     <div className="death-container">
+      {/* Applies class using talent name for custom styling like header color and background */}
+      <div className={`talent-header ${selectedTalent}`}>{selectedTalent}</div>
       <StreamSelection streamLinks={data} />
       <Player />
-      <h1 style={{ fontFamily: "Elden Ring" }}>{selectedTalent}</h1>
     </div>
   );
 }

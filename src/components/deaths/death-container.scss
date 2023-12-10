@@ -1,3 +1,29 @@
-.death-container{
-    margin-top: 100px
+.death-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .talent-header {
+    font-family: "Elden Ring";
+    font-size: 500%;
+  }
+
+  .Amelia {
+    text-shadow: 0 0 5px #ffefcc, 0 0 5px #ffff00;
+  }
+
+  .Gawr {
+    text-shadow: 0 0 5px #5abeff, 0 0 5px #add8e6;
+  }
+
+  .Ouro {
+    text-shadow: 0 0 5px #243a9e, 0 0 5px #0000ff;
+  }
+  .Ninomae {
+    text-shadow: 0 0 5px #54396d, 0 0 5px #9400d3;
+  }
+  .Mori {
+    text-shadow: 0 0 5px #bf547b, 0 0 5px #ff0000;
+  }
 }
