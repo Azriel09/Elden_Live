@@ -21,13 +21,26 @@ export default function Sidenav() {
   const handleToggle = (e) => {
     setToggled(!toggled);
     setSelectedTalent(e.target.innerText);
-   
   };
 
-  const iconsArray = [AmeIcon,GuraIcon, IrysIcon, CalliIcon, InaIcon, KroniiIcon]
+  const iconsArray = [
+    AmeIcon,
+    GuraIcon,
+    IrysIcon,
+    CalliIcon,
+    InaIcon,
+    KroniiIcon,
+  ];
 
-  const names = ["Amelia Watson", "Gawr Gura", "IRyS", "Mori Calliope", "Ninomae Ina'nis", "Ouro Kronii"]
-  
+  const names = [
+    "Amelia Watson",
+    "Gawr Gura",
+    "IRyS",
+    "Mori Calliope",
+    "Ninomae Ina'nis",
+    "Ouro Kronii",
+  ];
+
   return (
     <div className="sidebar-container">
       <Sidebar
@@ -61,9 +74,15 @@ export default function Sidenav() {
           <div className="nav-section">Death Timestamps</div>
           <SubMenu label="Hololive EN">
             {iconsArray.map((Component, i) => (
-               <MenuItem onClick={(e) => handleToggle(e)} icon={<Component/>} component={<Link to="/deaths"/>}>{names[i]}</MenuItem> 
+              <MenuItem
+              key={Component}
+                onClick={(e) => handleToggle(e)}
+                icon={<Component />}
+                component={<Link to="/deaths" />}
+              >
+                {names[i]}
+              </MenuItem>
             ))}
-    
           </SubMenu>
         </Menu>
       </Sidebar>
