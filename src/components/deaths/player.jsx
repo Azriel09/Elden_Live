@@ -3,7 +3,7 @@ import { useEffect } from "react"
 const sheetID = import.meta.env.VITE_SHEET_ID
 export default function Player() {
     const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:csv&sheet=Ame14`
-    
+      
     const handleClick = () => {
         fetch(url)
         .then((response) => response.text())
