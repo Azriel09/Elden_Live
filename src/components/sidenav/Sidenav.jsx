@@ -54,7 +54,7 @@ export default function Sidenav() {
       >
         <Menu
           menuItemStyles={{
-            // eslint-disable-next-line no-unused-vars
+          
             button: ({ level, active, disabled }) => {
               return {
                 color: "#b9b9bb",

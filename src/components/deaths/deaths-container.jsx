@@ -10,10 +10,11 @@ import GetLinks from "../../query/fetch_links";
 const apiKeyYT = import.meta.env.VITE_YOUTUBE_API_KEY;
 
 export default function DeathsContainer() {
-  const { selectedTalent } = useTalentState();
   const navigate = useNavigate();
+  const { selectedTalent } = useTalentState();
   const [streamLinks, setStreamLinks] = useState([]);
-  const [streamSelected, setStreamSelected] = useState();
+  const [selectedStreamIndex, setSelectedStreamIndex] = useState(0);
+  const [selectedStreamLink, setSelectedStreamLink] = useState("")
   useEffect(() => {
     if (!selectedTalent) {
       navigate("/");
@@ -45,7 +46,7 @@ export default function DeathsContainer() {
     <div className="death-container">
       {/* Applies class using talent name for custom styling like header color and background */}
       <div className={`talent-header ${selectedTalent}`}>{selectedTalent}</div>
-      <StreamSelection streamLinks={data} />
+      <StreamSelection streamLinks={data} setSelectedStreamIndex={setSelectedStreamIndex} setSelectedStreamLink={setSelectedStreamLink}/>
       <Player />
     </div>
   );
