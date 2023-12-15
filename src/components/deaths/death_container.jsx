@@ -14,7 +14,7 @@ export default function DeathsContainer() {
   const { selectedTalent } = useTalentState();
   const [streamLinks, setStreamLinks] = useState([]);
   const [selectedStreamIndex, setSelectedStreamIndex] = useState(0);
-  const [selectedStreamLink, setSelectedStreamLink] = useState("")
+  const [selectedStreamLink, setSelectedStreamLink] = useState("");
   useEffect(() => {
     if (!selectedTalent) {
       navigate("/");
@@ -22,17 +22,22 @@ export default function DeathsContainer() {
   }, []);
 
   const { status, data, error, isFetching } = GetLinks();
-  
- 
+  if (status === "loading") {
+    return <Loading />;
+  }
 
   return (
     <div className="death-container">
-
-
       {/* Applies class using talent name for custom styling like header color and background */}
       <div className={`talent-header ${selectedTalent}`}>{selectedTalent}</div>
-      <StreamSelection streamLinks={data}  setSelectedStreamLink={setSelectedStreamLink} selectedStreamLink={selectedStreamLink} selectedStreamIndex={selectedStreamIndex} setSelectedStreamIndex={setSelectedStreamIndex}/>
-      <Player data={data} selectedStreamLink={selectedStreamLink}/>
+      <StreamSelection
+        streamLinks={data}
+        setSelectedStreamLink={setSelectedStreamLink}
+        selectedStreamLink={selectedStreamLink}
+        selectedStreamIndex={selectedStreamIndex}
+        setSelectedStreamIndex={setSelectedStreamIndex}
+      />
+      <Player data={data} selectedStreamLink={selectedStreamLink} />
     </div>
   );
 }
