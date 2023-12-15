@@ -22,32 +22,17 @@ export default function DeathsContainer() {
   }, []);
 
   const { status, data, error, isFetching } = GetLinks();
-  if (status === "loading") {
-    return <Loading />;
-  }
-
-  //   let tempo = []
-  //    fetch("http://localhost:8000/test")
-  //     .then((response) => response.json())
-  //     .then((streams) => streams.map((stream) => {
-
-  //         tempo.push(stream.links)
-
-  //     }))
-  //     .catch((err) => {
-  //       console.log(err.message);
-  //     });
-  //    console.log(tempo)
-  //    setStreamLinks(tempo)
-
-  //  }, [selectedTalent])
+  
+ 
 
   return (
     <div className="death-container">
+
+
       {/* Applies class using talent name for custom styling like header color and background */}
       <div className={`talent-header ${selectedTalent}`}>{selectedTalent}</div>
-      <StreamSelection streamLinks={data} setSelectedStreamIndex={setSelectedStreamIndex} setSelectedStreamLink={setSelectedStreamLink}/>
-      <Player />
+      <StreamSelection streamLinks={data}  setSelectedStreamLink={setSelectedStreamLink} selectedStreamLink={selectedStreamLink} selectedStreamIndex={selectedStreamIndex} setSelectedStreamIndex={setSelectedStreamIndex}/>
+      <Player data={data} selectedStreamLink={selectedStreamLink}/>
     </div>
   );
 }
