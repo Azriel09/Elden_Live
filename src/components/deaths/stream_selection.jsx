@@ -1,11 +1,23 @@
-import { useState } from "react";
 import { useEffect } from "react";
 import { useTalentState } from "../../context/talent-context";
-export default function StreamSelection({ streamLinks, setSelectedStreamIndex, setSelectedStreamLink }) {
+export default function StreamSelection({
+  streamLinks,
+  selectedStreamLink,
+  selectedStreamIndex,
+  setSelectedStreamIndex,
+  setSelectedStreamLink,
+}) {
   const { selectedTalent } = useTalentState();
   if (!streamLinks) {
     return;
   }
+
+  useEffect(() => {
+    // Sets the very first stream as default when changing talents selected
+    setSelectedStreamLink(streamLinks[selectedTalent][0].links);
+    
+    setSelectedStreamIndex(0);
+  }, [selectedTalent]);
 
   function numbersToOrdinal(i) {
     const j = i % 10,
@@ -21,30 +33,32 @@ export default function StreamSelection({ streamLinks, setSelectedStreamIndex, s
     }
     return i + "th";
   }
+
   const handleSelectedStreamChange = (value) => {
-    setSelectedStreamIndex(value)
-    setSelectedStreamLink(streamLinks[selectedTalent][value].links)
-    console.log(streamLinks[selectedTalent][value].links)
-  }
+    // setSelectedStreamIndex(value)
+    setSelectedStreamLink(streamLinks[selectedTalent][value].links);
+    console.log(streamLinks[selectedTalent][value].links);
+    setSelectedStreamIndex(value); //Resets the select option
+  };
   return (
     <>
-      {streamLinks ? (
-        <div>
-          <button onClick={() => console.log(streamLinks[selectedTalent])}>
-            Streams
-          </button>
-          <select onChange={(e) => handleSelectedStreamChange(e.target.value)}>
-            {streamLinks[selectedTalent].map((stream, i) => {
-              const converted = numbersToOrdinal(i + 1);
-              return (
-                <option key={i} value={i}>
-                  {converted}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-      ) : null}
+      <div>
+  
+        <select
+      
+          value={selectedStreamIndex}
+          onChange={(e) => handleSelectedStreamChange(e.target.value)}
+        >
+          {streamLinks[selectedTalent].map((stream, i) => {
+            const converted = numbersToOrdinal(i + 1);
+            return (
+              <option key={i} value={i}>
+                {converted}
+              </option>
+            );
+          })}
+        </select>
+      </div>
     </>
   );
 }

@@ -1,0 +1,16 @@
+.stream-selection-container {
+    overflow-y: scroll;
+    height: auto;
+    .video-list-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 50px;
+        
+        width: 100%;
+        height: 50%;
+        
+    }
+}
