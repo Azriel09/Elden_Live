@@ -4,21 +4,19 @@ import HoloElden from "../../assets/holo-elden2.png";
 import { useTalentState } from "../../context/talent-context";
 import { useEffect } from "react";
 import Loading from "../loading/loading";
-import GetLinks from "../../query/fetch_links";
+import GetData from "../../query/fetch_links";
 export default function HomeContainer() {
   const { setSelectedTalent } = useTalentState();
   useEffect(() => {
     setSelectedTalent("");
   }, []);
-  const { status, data, error, isFetching } = GetLinks();
-  if (status === "loading") {
+  const data = GetData();
+  if (data === "loading") {
     return <Loading />;
   }
-
   return (
     <div className="home-container">
       <div className="header-video-container">
-   
         <div className="header">
           <img src={HoloElden} className="holo-elden" />
         </div>
