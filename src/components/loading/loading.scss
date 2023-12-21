@@ -1,18 +1,24 @@
-#heart {
+#icon {
 
-    width: 50px;
-    height: 50px;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
     img {
-        height: 100px;
         width: 100px;
-    }
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -50px 0 0 -50px;
+     }
+ 
 }
 
 
 
-#heart-container {
+#img {
     width: 100px;
-    height: 90px;
+    height: 100px;
     animation: pulsate 0.5s infinite;
     -webkit-animation: pulsate 1s infinite;
 }
