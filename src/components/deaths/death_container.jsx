@@ -6,11 +6,13 @@ import "./death-container.scss";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Loading from "../loading/loading";
-import GetLinks from "../../query/fetch_links";
+import GetData from "../../query/fetch_links";
 const apiKeyYT = import.meta.env.VITE_YOUTUBE_API_KEY;
 
 export default function DeathsContainer() {
   const navigate = useNavigate();
+  const data = GetData();
+
   const { selectedTalent } = useTalentState();
   const [streamLinks, setStreamLinks] = useState([]);
   const [selectedStreamIndex, setSelectedStreamIndex] = useState(0);
@@ -20,24 +22,22 @@ export default function DeathsContainer() {
       navigate("/");
     }
   }, []);
-
-  const { status, data, error, isFetching } = GetLinks();
-  if (status === "loading") {
+  if (data === "loading") {
     return <Loading />;
   }
-
+  console.log(data);
   return (
     <div className="death-container">
       {/* Applies class using talent name for custom styling like header color and background */}
       <div className={`talent-header ${selectedTalent}`}>{selectedTalent}</div>
       <StreamSelection
-        streamLinks={data}
+        streamLinks={data.links}
         setSelectedStreamLink={setSelectedStreamLink}
         selectedStreamLink={selectedStreamLink}
         selectedStreamIndex={selectedStreamIndex}
         setSelectedStreamIndex={setSelectedStreamIndex}
       />
-      <Player data={data} selectedStreamLink={selectedStreamLink} />
+      <Player data={data.deaths} selectedStreamLink={selectedStreamLink} />
     </div>
   );
 }
