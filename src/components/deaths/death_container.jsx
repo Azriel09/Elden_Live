@@ -37,7 +37,7 @@ export default function DeathsContainer() {
         selectedStreamIndex={selectedStreamIndex}
         setSelectedStreamIndex={setSelectedStreamIndex}
       />
-      <Player data={data.deaths} selectedStreamLink={selectedStreamLink} />
+      <Player data={data.deaths} selectedStreamLink={selectedStreamLink} selectedTalent={selectedTalent} selectedStreamIndex={selectedStreamIndex}/>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import ReactPlayer from "react-player";
 import "./player_styles.scss";
 import Timestamps from "./timestamps";
 const sheetID = import.meta.env.VITE_SHEET_ID;
-export default function Player({ selectedStreamLink }) {
+export default function Player({ selectedStreamLink, data,selectedTalent,selectedStreamIndex }) {
   const ref = React.createRef();
   const stream_link =
     selectedStreamLink.replace("watch?v=", "embed/") + "?rel=0";
@@ -66,7 +66,9 @@ export default function Player({ selectedStreamLink }) {
           controls
         />
       </div>
-      <div><Timestamps selectedStreamLink={selectedStreamLink}/></div>
+      <div>
+        <Timestamps selectedStreamLink={selectedStreamLink} data={data} selectedTalent={selectedTalent} selectedStreamIndex={selectedStreamIndex}/>
+      </div>
       <button onClick={() => handleClick()}>GG</button>
     </div>
   );
