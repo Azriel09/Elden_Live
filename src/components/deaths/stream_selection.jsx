@@ -15,8 +15,9 @@ export default function StreamSelection({
   useEffect(() => {
     // Sets the very first stream as default when changing talents selected
     setSelectedStreamLink(streamLinks[selectedTalent][0].links);
-    
+
     setSelectedStreamIndex(0);
+    console.log(selectedStreamIndex);
   }, [selectedTalent]);
 
   function numbersToOrdinal(i) {
@@ -37,15 +38,14 @@ export default function StreamSelection({
   const handleSelectedStreamChange = (value) => {
     // setSelectedStreamIndex(value)
     setSelectedStreamLink(streamLinks[selectedTalent][value].links);
-    console.log(streamLinks[selectedTalent][value].links);
-    setSelectedStreamIndex(value); //Resets the select option
+
+    setSelectedStreamIndex(value);
+    console.log(selectedStreamIndex);
   };
   return (
     <>
       <div>
-  
         <select
-      
           value={selectedStreamIndex}
           onChange={(e) => handleSelectedStreamChange(e.target.value)}
         >
