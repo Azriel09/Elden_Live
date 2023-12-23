@@ -15,20 +15,21 @@ export default function Player({
   const ref = React.createRef();
   const stream_link =
     selectedStreamLink.replace("watch?v=", "embed/") + "?rel=0";
-  const [sliderConfigs, setSliderConfigs] = useState({
-    max: 0,
-    sliderData: [],
-    killersArr: Object.values(
-      data[selectedTalent][selectedStreamIndex].timestamps_killers
-    ),
-    timesArr: Object.keys(
-      data[selectedTalent][selectedStreamIndex].timestamps_killers
-    ),
-  });
+
+  const [killersArr, setKillersArr] = useState([]);
+  const [timesArr, setTimesArr] = useState([]);
   const [boss, setBoss] = useState(false);
   const [npc, setNPC] = useState(false);
+  const [max, setMax] = useState(0);
+  const [sliderData, setSliderData] = useState([]);
+  const [autoplay, setAutoplay] = useState(false);
   useEffect(() => {
     getID();
+    const currentStreamData =
+      data[selectedTalent][selectedStreamIndex].timestamps_killers;
+
+    setKillersArr(Object.values(currentStreamData));
+    setTimesArr(Object.keys(currentStreamData));
 
     // Converting timestamps into total number of seconds
     let arrays = [];
@@ -42,10 +43,7 @@ export default function Player({
       tempo.value = Number(totalSeconds);
       arrays.push(tempo);
     });
-    setSliderConfigs({
-      ...sliderConfigs, 
-      sliderData: arrays, 
-    });
+    setSliderData(arrays);
   }, [selectedStreamLink]);
 
   function getID() {
@@ -64,7 +62,7 @@ export default function Player({
 
       const iso8601Duration = data.items[0].contentDetails.duration;
       const secondsDuration = moment.duration(iso8601Duration).asSeconds();
-      setSliderConfigs({ ...sliderConfigs, max: secondsDuration });
+      setMax(secondsDuration);
     } catch (error) {
       console.error(error);
 
@@ -79,7 +77,7 @@ export default function Player({
       //   const response = await fetch(url, options);
       //   const data = await response.json();
       //   const durationSeconds = data.duration;
-      //   setSliderConfigs({ ...sliderConfigs, max: durationSeconds });
+      // setMax(secondsDuration)
       // } catch (error) {
       //   console.error(error);
       // }
@@ -87,41 +85,35 @@ export default function Player({
   };
 
   const checkBoss = (e) => {
-    let index = sliderConfigs.sliderData.findIndex(
-      (mark) => mark.value === e.target.value
-    ); //index of slider chosen
-
+    setAutoplay(true);
+    let index = sliderData.findIndex((mark) => mark.value === e.target.value); //index of slider chosen
+    console.log(killersArr[index]);
     ref.current.seekTo(e.target.value - 2);
-    if (sliderConfigs.killersArr[index].includes("Boss")) {
-
+    if (killersArr[index].includes("Boss")) {
       setBoss(true);
       setNPC(false);
-    } else if (sliderConfigs.killersArr[index].includes("NPC")) {
- 
+    } else if (killersArr[index].includes("NPC")) {
       setBoss(false);
       setNPC(true);
     } else {
-
       setBoss(false);
       setNPC(false);
     }
   };
 
   function valueLabelFormat(value) {
-    let index = sliderConfigs.sliderData.findIndex(
-      (mark) => mark.value === value
-    );
+    let index = sliderData.findIndex((mark) => mark.value === value);
 
     try {
-      if (sliderConfigs.killersArr[index].includes("Boss")) {
-        let death = sliderConfigs.killersArr[index].replace("Boss", "");
+      if (killersArr[index].includes("Boss")) {
+        let death = killersArr[index].replace("Boss", "");
 
         return death;
-      } else if (sliderConfigs.killersArr[index].includes("NPC")) {
-        let death = sliderConfigs.killersArr[index].replace("NPC", "");
+      } else if (killersArr[index].includes("NPC")) {
+        let death = killersArr[index].replace("NPC", "");
         return death;
       } else {
-        return sliderConfigs.killersArr[index];
+        return killersArr[index];
       }
     } catch (err) {
       console.log(err);
@@ -129,86 +121,91 @@ export default function Player({
   }
 
   function valuetext(value) {
-    return sliderConfigs.sliderData.map((mark) => mark.label);
+    return sliderData.map((mark) => mark.label);
   }
   return (
     <>
-      <div className="react-player-wrapper">
-        <ReactPlayer
-          className="player"
-          ref={ref}
-          url={stream_link}
-          width="100%"
-          height="100%"
-          controls
-        />
-      </div>
-      <Box
-        sx={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          position: "absolute",
-        }}
-      >
-        {sliderConfigs.sliderData.length >= 1 ? (
-          <Slider
-            aria-label="Restricted values"
-            valueLabelFormat={valueLabelFormat}
-            getAriaValueText={valuetext}
-            valueLabelDisplay="on"
-            step={null}
-            min={0}
-            max={sliderConfigs.max}
-            onChange={(e) => checkBoss(e)}
-            marks={sliderConfigs.sliderData}
-            track={false}
-            sx={[
-              {
-                marginTop: "20px",
-                paddingTop: "20px",
-                color: "rgba(0,0,0,0)",
-                // backgroundColor: "#323233",
-                width: "97%",
+      {sliderData ? (
+        <div>
+          <div className="react-player-wrapper">
+            <ReactPlayer
+              className="player"
+              ref={ref}
+              url={stream_link}
+              width="100%"
+              height="100%"
+              controls
+              playing={autoplay}
+            />
+          </div>
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              position: "absolute",
+            }}
+          >
+            {sliderData.length >= 1 ? (
+              <Slider
+                aria-label="Restricted values"
+                valueLabelFormat={valueLabelFormat}
+                getAriaValueText={valuetext}
+                valueLabelDisplay="on"
+                step={null}
+                min={0}
+                max={max}
+                onChange={(e) => checkBoss(e)}
+                marks={sliderData}
+                track={false}
+                sx={[
+                  {
+                    marginTop: "20px",
+                    paddingTop: "20px",
+                    color: "rgba(0,0,0,0)",
+                    // backgroundColor: "#323233",
+                    width: "97%",
 
-                "& .MuiSlider-mark": {
-                  backgroundColor: "red",
-                  height: "17px",
-                  width: "1px",
-                  borderRadius: "1px",
-                  "&:hover": {
-                    width: "2px",
-                    height: "20px",
+                    "& .MuiSlider-mark": {
+                      backgroundColor: "red",
+                      height: "17px",
+                      width: "1px",
+                      borderRadius: "1px",
+                      "&:hover": {
+                        width: "2px",
+                        height: "20px",
+                      },
+                    },
+                    "& .MuiSlider-thumb": {
+                      color: "#b9b9bb",
+                      height: 25,
+                      width: "3px",
+                    },
+                    "& .MuiSlider-valueLabel": {
+                      backgroundColor: "gray",
+                    },
                   },
-                },
-                "& .MuiSlider-thumb": {
-                  color: "#b9b9bb",
-                  height: 25,
-                  width: "3px",
-                },
-                "& .MuiSlider-valueLabel": {
-                  backgroundColor: "gray",
-                },
-              },
-              boss && {
-                "& .MuiSlider-valueLabel": {
-                  backgroundColor: "lightblue",
-                  color: "black",
-                },
-              },
-              npc && {
-                "& .MuiSlider-valueLabel": {
-                  backgroundColor: "green",
-                  color: "white",
-                },
-              },
-            ]}
-          />
-        ) : (
-          <h1>Deez Nuts</h1>
-        )}
-      </Box>
+                  boss && {
+                    "& .MuiSlider-valueLabel": {
+                      backgroundColor: "lightblue",
+                      color: "black",
+                    },
+                  },
+                  npc && {
+                    "& .MuiSlider-valueLabel": {
+                      backgroundColor: "green",
+                      color: "white",
+                    },
+                  },
+                ]}
+              />
+            ) : (
+              <h1>Deez Nuts</h1>
+            )}
+          </Box>
+        </div>
+      ) : null}
     </>
   );
 }
