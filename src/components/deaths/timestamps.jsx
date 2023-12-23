@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Slider } from "@mui/material";
 import { useQueryClient } from "@tanstack/react-query";
 
@@ -15,6 +15,7 @@ export default function Timestamps({
   const [boss, setBoss] = useState(false);
   const [npc, setNPC] = useState(false);
   const [autoplay, setAutoplay] = useState(false);
+  const ref = React.createRef();
   let timesArr;
   let killersArr;
 
@@ -23,11 +24,23 @@ export default function Timestamps({
       data[selectedTalent][selectedStreamIndex].timestamps_killers;
     timesArr = Object.keys(selectedStreamData);
     killersArr = Object.values(selectedStreamData);
-    
+    let objects = [];
+
+    // Converting timestamps into total number of seconds
+    Object.keys(selectedStreamData).map((time) => {
+      const tempo = {};
+      let hms = time;
+      let a = hms.split(":");
+      const totalSeconds = +a[0] * 60 * 60 + +a[1] * 60 + +a[2];
+      tempo.value = Number(totalSeconds);
+      objects.push(tempo);
+    });
+    setSliderData(objects);
+    console.log(objects);
   }, [selectedStreamLink]);
 
   function getID() {
-    let url = selectedStreamLink.replace("watch?v=", "embed/");
+    let url = selectedStreamLink
     const id = url.split("/").pop();
 
     getVideoDuration(id);
@@ -99,4 +112,71 @@ export default function Timestamps({
   function valuetext(value) {
     return sliderData.map((mark) => mark.label);
   }
+
+  return (
+    <div>
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginTop: "20px",
+        }}
+      >
+        {sliderData ? (
+          <Slider
+            aria-label="Restricted values"
+            valueLabelFormat={valueLabelFormat}
+            getAriaValueText={valuetext}
+            valueLabelDisplay="on"
+            step={null}
+            min={0}
+            max={max}
+            onChange={(e) => checkBoss(e)}
+            marks={sliderData}
+            track={false}
+            sx={[
+              {
+                color: "rgba(0,0,0,0)",
+                // backgroundColor: "#323233",
+                width: "98%",
+
+                "& .MuiSlider-mark": {
+                  backgroundColor: "red",
+                  height: "17px",
+                  width: "1px",
+                  borderRadius: "1px",
+                  "&:hover": {
+                    width: "2px",
+                    height: "20px",
+                  },
+                },
+                "& .MuiSlider-thumb": {
+                  color: "#b9b9bb",
+                  height: 25,
+                  width: "3px",
+                },
+                "& .MuiSlider-valueLabel": {
+                  backgroundColor: "gray",
+                },
+              },
+              boss && {
+                "& .MuiSlider-valueLabel": {
+                  backgroundColor: "lightblue",
+                  color: "black",
+                },
+              },
+              npc && {
+                "& .MuiSlider-valueLabel": {
+                  backgroundColor: "green",
+                  color: "white",
+                },
+              },
+            ]}
+          />
+        ) : null}
+      </Box>
+    </div>
+  );
 }
