@@ -18,8 +18,6 @@ export default function Player({
   const [sliderConfigs, setSliderConfigs] = useState({
     max: 0,
     sliderData: [],
-    boss: false,
-    npc: false,
     killersArr: Object.values(
       data[selectedTalent][selectedStreamIndex].timestamps_killers
     ),
@@ -27,7 +25,8 @@ export default function Player({
       data[selectedTalent][selectedStreamIndex].timestamps_killers
     ),
   });
-
+  const [boss, setBoss] = useState(false);
+  const [npc, setNPC] = useState(false);
   useEffect(() => {
     getID();
 
@@ -44,15 +43,14 @@ export default function Player({
       arrays.push(tempo);
     });
     setSliderConfigs({
-      ...sliderConfigs, // Spread the current state
-      sliderData: arrays, // Update the 'name' property
+      ...sliderConfigs, 
+      sliderData: arrays, 
     });
   }, [selectedStreamLink]);
 
   function getID() {
     let url = selectedStreamLink.replace("watch?v=", "embed/");
     const id = url.split("/").pop();
-
     getVideoDuration(id);
   }
 
@@ -95,14 +93,17 @@ export default function Player({
 
     ref.current.seekTo(e.target.value - 2);
     if (sliderConfigs.killersArr[index].includes("Boss")) {
-      setSliderConfigs({ ...sliderConfigs, boss: true });
-      setSliderConfigs({ ...sliderConfigs, npc: false });
+
+      setBoss(true);
+      setNPC(false);
     } else if (sliderConfigs.killersArr[index].includes("NPC")) {
-      setSliderConfigs({ ...sliderConfigs, npc: true });
-      setSliderConfigs({ ...sliderConfigs, boss: false });
+ 
+      setBoss(false);
+      setNPC(true);
     } else {
-      setSliderConfigs({ ...sliderConfigs, boss: false });
-      setSliderConfigs({ ...sliderConfigs, npc: false });
+
+      setBoss(false);
+      setNPC(false);
     }
   };
 
@@ -190,13 +191,13 @@ export default function Player({
                   backgroundColor: "gray",
                 },
               },
-              sliderConfigs.boss && {
+              boss && {
                 "& .MuiSlider-valueLabel": {
                   backgroundColor: "lightblue",
                   color: "black",
                 },
               },
-              sliderConfigs.npc && {
+              npc && {
                 "& .MuiSlider-valueLabel": {
                   backgroundColor: "green",
                   color: "white",
