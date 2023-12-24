@@ -3,6 +3,7 @@ import ReactPlayer from "react-player";
 import "./player_styles.scss";
 import { Box, Slider } from "@mui/material";
 import moment from "moment";
+import { array } from "prop-types";
 const sheetID = import.meta.env.VITE_SHEET_ID;
 const apiKeyYT = import.meta.env.VITE_YOUTUBE_API_KEY;
 const apiKeyHolodex = import.meta.env.VITE_HOLODEX_API_KEY;
@@ -13,9 +14,12 @@ export default function PlayerTimestamps({
   selectedStreamIndex,
 }) {
   const ref = React.createRef();
-  const stream_link =
+  const stream_link2 =
     selectedStreamLink.replace("watch?v=", "embed/") + "?rel=0";
-
+  const stream_link = stream_link2.replace(
+    "www.youtube.com",
+    "www.youtube-nocookie.com"
+  );
   const [killersArr, setKillersArr] = useState([]);
   const [timesArr, setTimesArr] = useState([]);
   const [boss, setBoss] = useState(false);
@@ -44,6 +48,7 @@ export default function PlayerTimestamps({
       arrays.push(tempo);
     });
     setSliderData(arrays);
+    console.log(stream_link);
   }, [selectedStreamLink]);
 
   function getID() {
@@ -64,15 +69,12 @@ export default function PlayerTimestamps({
       const secondsDuration = moment.duration(iso8601Duration).asSeconds();
       setMax(secondsDuration);
     } catch (error) {
-      console.error(error);
-
       // If error, use Holodex API
       // const url = `https://holodex.net/api/v2/videos/${id}`;
       // const options = {
       //   method: "GET",
       //   headers: { Accept: "application/json", "X-APIKEY": apiKeyHolodex },
       // };
-
       // try {
       //   const response = await fetch(url, options);
       //   const data = await response.json();
@@ -87,8 +89,8 @@ export default function PlayerTimestamps({
   const checkBoss = (e) => {
     setAutoplay(true);
     let index = sliderData.findIndex((mark) => mark.value === e.target.value); //index of slider chosen
-    console.log(killersArr[index]);
-    ref.current.seekTo(e.target.value - 2);
+    console.log(stream_link);
+    ref.current.seekTo(e.target.value);
     if (killersArr[index].includes("Boss")) {
       setBoss(true);
       setNPC(false);
@@ -99,6 +101,7 @@ export default function PlayerTimestamps({
       setBoss(false);
       setNPC(false);
     }
+    ref.current.seekTo(e.target.value);
   };
 
   function valueLabelFormat(value) {
@@ -115,9 +118,7 @@ export default function PlayerTimestamps({
       } else {
         return killersArr[index];
       }
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   }
 
   function valuetext(value) {
@@ -131,7 +132,7 @@ export default function PlayerTimestamps({
             ref={ref}
             url={stream_link}
             controls
-            playing={autoplay}
+            playing={true}
             defaultValue={0}
             width="100%"
             height="100%"
@@ -147,13 +148,14 @@ export default function PlayerTimestamps({
             position: "absolute",
           }}
         >
-          {sliderData ? (
+          {sliderData && killersArr.length >= 1 ? (
             <Slider
               aria-label="Restricted values"
               valueLabelFormat={valueLabelFormat}
               getAriaValueText={valuetext}
               valueLabelDisplay="on"
               step={null}
+              defaultValue={0}
               min={0}
               max={max}
               onChange={(e) => checkBoss(e)}

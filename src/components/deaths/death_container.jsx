@@ -28,7 +28,7 @@ export default function DeathsContainer() {
   }
   console.log(data);
   return (
-    <div className="death-container">
+    <div className={`death-container bg-${selectedTalent}`}>
       {/* Applies class using talent name for custom styling like header color and background */}
       <div className={`talent-header ${selectedTalent}`}>{selectedTalent}</div>
       <StreamSelection
