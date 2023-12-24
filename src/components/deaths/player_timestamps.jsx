@@ -14,12 +14,12 @@ export default function PlayerTimestamps({
   selectedStreamIndex,
 }) {
   const ref = React.createRef();
-  const stream_link2 =
-    selectedStreamLink.replace("watch?v=", "embed/") + "?rel=0";
-  const stream_link = stream_link2.replace(
-    "www.youtube.com",
-    "www.youtube-nocookie.com"
-  );
+  const stream_link =
+    selectedStreamLink.replace(
+      "www.youtube.com/watch?v=",
+      "www.youtube-nocookie.com/embed/"
+    ) + "?rel=0";
+  // Video won't continue where the user left off
   const [killersArr, setKillersArr] = useState([]);
   const [timesArr, setTimesArr] = useState([]);
   const [boss, setBoss] = useState(false);
@@ -27,8 +27,10 @@ export default function PlayerTimestamps({
   const [max, setMax] = useState(0);
   const [sliderData, setSliderData] = useState([]);
   const [autoplay, setAutoplay] = useState(false);
+  const [selectedTimestamp, setSelectedTimestamps] = useState(false);
   useEffect(() => {
     getID();
+    setSelectedTimestamps(false);
     const currentStreamData =
       data[selectedTalent][selectedStreamIndex].timestamps_killers;
 
@@ -48,7 +50,6 @@ export default function PlayerTimestamps({
       arrays.push(tempo);
     });
     setSliderData(arrays);
-    console.log(stream_link);
   }, [selectedStreamLink]);
 
   function getID() {
@@ -87,6 +88,7 @@ export default function PlayerTimestamps({
   };
 
   const checkBoss = (e) => {
+    setSelectedTimestamps(true);
     setAutoplay(true);
     let index = sliderData.findIndex((mark) => mark.value === e.target.value); //index of slider chosen
     console.log(stream_link);
@@ -183,9 +185,15 @@ export default function PlayerTimestamps({
                     color: "#b9b9bb",
                     height: 25,
                     width: "3px",
+                    visibility: "hidden",
                   },
                   "& .MuiSlider-valueLabel": {
                     backgroundColor: "gray",
+                  },
+                },
+                selectedTimestamp && {
+                  "& .MuiSlider-thumb": {
+                    visibility: "visible",
                   },
                 },
                 boss && {
