@@ -1,12 +1,13 @@
 import { useTalentState } from "../../context/talent-context";
 import "../../assets/elden-ring-font.css";
-import Player from "./player";
+import Player from "./player_timestamps";
 import StreamSelection from "./stream_selection";
 import "./death-container.scss";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Loading from "../loading/loading";
 import GetData from "../../query/fetch_links";
+import PlayerTimestamps from "./player_timestamps";
 const apiKeyYT = import.meta.env.VITE_YOUTUBE_API_KEY;
 
 export default function DeathsContainer() {
@@ -39,7 +40,7 @@ export default function DeathsContainer() {
       />
 
       <div className="player-container">
-        <Player
+        <PlayerTimestamps
           data={data.deaths}
           selectedStreamLink={selectedStreamLink}
           selectedTalent={selectedTalent}
