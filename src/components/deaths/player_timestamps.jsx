@@ -6,7 +6,7 @@ import moment from "moment";
 const sheetID = import.meta.env.VITE_SHEET_ID;
 const apiKeyYT = import.meta.env.VITE_YOUTUBE_API_KEY;
 const apiKeyHolodex = import.meta.env.VITE_HOLODEX_API_KEY;
-export default function Player({
+export default function PlayerTimestamps({
   selectedStreamLink,
   data,
   selectedTalent,
