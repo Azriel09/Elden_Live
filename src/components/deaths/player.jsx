@@ -125,87 +125,84 @@ export default function Player({
   }
   return (
     <>
-      {sliderData ? (
-        <div>
-          <div className="react-player-wrapper">
-            <ReactPlayer
-              className="player"
-              ref={ref}
-              url={stream_link}
-              width="100%"
-              height="100%"
-              controls
-              playing={autoplay}
-            />
-          </div>
-          <Box
-            sx={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              position: "absolute",
-            }}
-          >
-            {sliderData.length >= 1 ? (
-              <Slider
-                aria-label="Restricted values"
-                valueLabelFormat={valueLabelFormat}
-                getAriaValueText={valuetext}
-                valueLabelDisplay="on"
-                step={null}
-                min={0}
-                max={max}
-                onChange={(e) => checkBoss(e)}
-                marks={sliderData}
-                track={false}
-                sx={[
-                  {
-                    marginTop: "20px",
-                    paddingTop: "20px",
-                    color: "rgba(0,0,0,0)",
-                    // backgroundColor: "#323233",
-                    width: "97%",
+      <div className="react-player-wrapper">
+        {sliderData ? (
+          <ReactPlayer
+            ref={ref}
+            url={stream_link}
+            controls
+            playing={autoplay}
+            defaultValue={0}
+            width="100%"
+            height="100%"
+            className="player"
+          />
+        ) : null}
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            position: "absolute",
+          }}
+        >
+          {sliderData ? (
+            <Slider
+              aria-label="Restricted values"
+              valueLabelFormat={valueLabelFormat}
+              getAriaValueText={valuetext}
+              valueLabelDisplay="on"
+              step={null}
+              min={0}
+              max={max}
+              onChange={(e) => checkBoss(e)}
+              marks={sliderData}
+              track={false}
+              sx={[
+                {
+                  marginTop: "20px",
+                  paddingTop: "20px",
+                  color: "rgba(0,0,0,0)",
+                  // backgroundColor: "#323233",
+                  width: "97%",
 
-                    "& .MuiSlider-mark": {
-                      backgroundColor: "red",
-                      height: "17px",
-                      width: "1px",
-                      borderRadius: "1px",
-                      "&:hover": {
-                        width: "2px",
-                        height: "20px",
-                      },
-                    },
-                    "& .MuiSlider-thumb": {
-                      color: "#b9b9bb",
-                      height: 25,
-                      width: "3px",
-                    },
-                    "& .MuiSlider-valueLabel": {
-                      backgroundColor: "gray",
+                  "& .MuiSlider-mark": {
+                    backgroundColor: "red",
+                    height: "17px",
+                    width: "1px",
+                    borderRadius: "1px",
+                    "&:hover": {
+                      width: "2px",
+                      height: "20px",
                     },
                   },
-                  boss && {
-                    "& .MuiSlider-valueLabel": {
-                      backgroundColor: "lightblue",
-                      color: "black",
-                    },
+                  "& .MuiSlider-thumb": {
+                    color: "#b9b9bb",
+                    height: 25,
+                    width: "3px",
                   },
-                  npc && {
-                    "& .MuiSlider-valueLabel": {
-                      backgroundColor: "green",
-                      color: "white",
-                    },
+                  "& .MuiSlider-valueLabel": {
+                    backgroundColor: "gray",
                   },
-                ]}
-              />
-            ) : (
-              <h1>Deez Nuts</h1>
-            )}
-          </Box>
-        </div>
-      ) : null}
+                },
+                boss && {
+                  "& .MuiSlider-valueLabel": {
+                    backgroundColor: "lightblue",
+                    color: "black",
+                  },
+                },
+                npc && {
+                  "& .MuiSlider-valueLabel": {
+                    backgroundColor: "green",
+                    color: "white",
+                  },
+                },
+              ]}
+            />
+          ) : null}
+        </Box>
+      </div>
     </>
   );
 }
