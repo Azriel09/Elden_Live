@@ -127,31 +127,111 @@ export default function PlayerTimestamps({
     return sliderData.map((mark) => mark.label);
   }
   return (
-    <>
-      <div className="react-player-wrapper">
+    // <>
+    //   <div className="react-player-wrapper">
+    //     {sliderData ? (
+    //       <>
+    //         {" "}
+    //         <ReactPlayer
+    //           ref={ref}
+    //           url={stream_link}
+    //           controls
+    //           playing={true}
+    //           defaultValue={0}
+    //           width="80%"
+    //           height="40%"
+    //           className="player"
+    //         />
+    //       </>
+    //     ) : null}
+    //     <Box
+    //       sx={{
+    //         width: "100%",
+    //         height: "40%",
+
+    //         position: "absolute",
+    //       }}
+    //     >
+    //       {sliderData && killersArr.length >= 1 ? (
+    //         <Slider
+    //           aria-label="Restricted values"
+    //           valueLabelFormat={valueLabelFormat}
+    //           getAriaValueText={valuetext}
+    //           valueLabelDisplay="on"
+    //           step={null}
+    //           defaultValue={0}
+    //           min={0}
+    //           max={max}
+    //           onChange={(e) => checkBoss(e)}
+    //           marks={sliderData}
+    //           track={false}
+    //           sx={[
+    //             {
+    //               color: "rgba(0,0,0,0)",
+    //               // backgroundColor: "#323233",
+    //               width: "97%",
+
+    //               "& .MuiSlider-mark": {
+    //                 backgroundColor: "red",
+    //                 height: "17px",
+    //                 width: "1px",
+    //                 borderRadius: "1px",
+    //                 "&:hover": {
+    //                   width: "2px",
+    //                   height: "20px",
+    //                 },
+    //               },
+    //               "& .MuiSlider-thumb": {
+    //                 color: "#b9b9bb",
+    //                 height: 25,
+    //                 width: "3px",
+    //                 visibility: "hidden",
+    //               },
+    //               "& .MuiSlider-valueLabel": {
+    //                 backgroundColor: "gray",
+    //               },
+    //             },
+    //             // Shows the thumb slider when selected a timestamp
+    //             selectedTimestamp && {
+    //               "& .MuiSlider-thumb": {
+    //                 visibility: "visible",
+    //               },
+    //             },
+    //             // Changes the bg color of label of timestamp if its a boss or npc
+    //             boss && {
+    //               "& .MuiSlider-valueLabel": {
+    //                 backgroundColor: "lightblue",
+    //                 color: "black",
+    //               },
+    //             },
+    //             npc && {
+    //               "& .MuiSlider-valueLabel": {
+    //                 backgroundColor: "green",
+    //                 color: "white",
+    //               },
+    //             },
+    //           ]}
+    //         />
+    //       ) : null}
+    //     </Box>
+    //   </div>
+    // </>
+    <div className="main-container">
+      <div className="player-timestamps-container">
         {sliderData ? (
-          <ReactPlayer
-            ref={ref}
-            url={stream_link}
-            controls
-            playing={true}
-            defaultValue={0}
-            width="100%"
-            height="100%"
-            className="player"
-          />
-        ) : null}
-        <Box
-          sx={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            position: "absolute",
-          }}
-        >
-          {sliderData && killersArr.length >= 1 ? (
+          <div className="player-timestamps">
+            <ReactPlayer
+              ref={ref}
+              url={stream_link}
+              controls
+              playing={true}
+              defaultValue={0}
+              width="100%"
+              height="75%"
+              className="player"
+            />
             <Slider
+              className="slider"
               aria-label="Restricted values"
               valueLabelFormat={valueLabelFormat}
               getAriaValueText={valuetext}
@@ -167,9 +247,10 @@ export default function PlayerTimestamps({
                 {
                   marginTop: "20px",
                   paddingTop: "20px",
+                  marginLeft: "10px",
                   color: "rgba(0,0,0,0)",
                   // backgroundColor: "#323233",
-                  width: "97%",
+                  width: "98%",
 
                   "& .MuiSlider-mark": {
                     backgroundColor: "red",
@@ -197,7 +278,7 @@ export default function PlayerTimestamps({
                     visibility: "visible",
                   },
                 },
-                // Changes the bg label of timestamp if its a boss or npc
+                // Changes the bg color of label of timestamp if its a boss or npc
                 boss && {
                   "& .MuiSlider-valueLabel": {
                     backgroundColor: "lightblue",
@@ -212,9 +293,10 @@ export default function PlayerTimestamps({
                 },
               ]}
             />
-          ) : null}
-        </Box>
+          </div>
+        ) : null}
       </div>
-    </>
+      <div className="bar-chart-container"></div>
+    </div>
   );
 }

@@ -1,15 +1,35 @@
+// .react-player-wrapper {
+//     position: relative;
+//     padding-top: 56.25%;
+//     width: 60%;
+//     height: 60%;
+ 
+//     .player {
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         width: 600px;
+//     }
 
+// }
     
-    .react-player-wrapper {
+ 
+
+.main-container{
+    width: 100vw;
+    .player-timestamps-container {
+        width: 70%;
         position: relative;
         padding-top: 56.25%;
-      
-        .player {
+        .player-timestamps {
             position: absolute;
             top: 0;
             left: 0;
+            width: 80%;
+            height: 80%;
         }
     }
-
-
- 
+    .bar-chart-container {
+        width: 30%;
+    }
+}
