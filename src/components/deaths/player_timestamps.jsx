@@ -191,11 +191,13 @@ export default function PlayerTimestamps({
                     backgroundColor: "gray",
                   },
                 },
+                // Shows the thumb slider when selected a timestamp
                 selectedTimestamp && {
                   "& .MuiSlider-thumb": {
                     visibility: "visible",
                   },
                 },
+                // Changes the bg label of timestamp if its a boss or npc
                 boss && {
                   "& .MuiSlider-valueLabel": {
                     backgroundColor: "lightblue",

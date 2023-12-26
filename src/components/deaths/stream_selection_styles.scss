@@ -1,16 +1,68 @@
-.stream-selection-container {
-    overflow-y: scroll;
-    height: auto;
-    .video-list-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 50px;
-        
-        width: 100%;
-        height: 50%;
-        
+.selection-container {
+    margin-bottom: 10px;
+  
+    position: relative;
+    display: flex;
+    width: 5%;
+    height: 3em;
+    line-height: 3;
+    background: #5c6664;
+    overflow: hidden;
+    border-radius: .25em;
+    
+    select::-ms-expand {
+        display: none;
+     }
+    .selection {
+        width: 100px;
+        height:30px;
+        font-size: 110%;  -webkit-appearance:none;
+        -moz-appearance:none;
+        -ms-appearance:none;
+        appearance:none;
+        outline:0;
+        box-shadow:none;
+        border:0!important;
+        background: #5c6664;
+        background-image: none;
+        flex: 1;
+        padding: 0 .5em;
+        color:#fff;
+        cursor:pointer;
+        margin-top: 6px;
+        font-family: 'Open Sans', sans-serif;
     }
+    
+}
+.selection-container::after{
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #2b2e2e;
+    cursor:pointer;
+    pointer-events:none;
+    transition:.25s all ease;
+}
+.selection-container:hover::after {
+    color: #23b499;
+ }
+.Amelia:hover::after {
+    color: #ffff00;
+ }
+ .Gawr:hover::after {
+    color: #2d85da
+  }
+.IRyS:hover::after{
+    color: #ff00ff
+}
+.Ouro:hover::after{
+    color: #0000ff;
+}
+.Ninomae:hover::after {
+    color: #7d708a
+}
+.Mori:hover::after{
+    color: #ff0000;
 }
