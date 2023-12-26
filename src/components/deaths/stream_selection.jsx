@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useTalentState } from "../../context/talent-context";
+import "./stream_selection_styles.scss";
 export default function StreamSelection({
   streamLinks,
   selectedStreamLink,
@@ -44,8 +45,10 @@ export default function StreamSelection({
   };
   return (
     <>
-      <div>
+      <div className={`selection-container ${selectedTalent}`}>
+      
         <select
+          className="selection"
           value={selectedStreamIndex}
           onChange={(e) => handleSelectedStreamChange(e.target.value)}
         >
