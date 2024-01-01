@@ -1,6 +1,6 @@
 import { useTalentState } from "../../context/talent-context";
 import "../../assets/elden-ring-font.css";
-import Player from "./player_timestamps";
+
 import StreamSelection from "./stream_selection";
 import "./death-container.scss";
 import { useNavigate } from "react-router-dom";
