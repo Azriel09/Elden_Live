@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTalentState } from "../../context/talent-context";
 import ReactApexChart from "react-apexcharts";
+import "./bar_graph_styles.scss";
 export default function BarGraphKillers({ killers, selectedStreamLink }) {
   const [killer, setKiller] = useState([]);
   const [deaths, setDeaths] = useState([]);
@@ -16,7 +17,8 @@ export default function BarGraphKillers({ killers, selectedStreamLink }) {
       }
     });
     countOccurences(tempObj);
-  }, [selectedStreamLink]);
+  }, [selectedStreamLink, killers]);
+
   function chartColor() {
     switch (selectedTalent) {
       case "Amelia Watson":
@@ -41,6 +43,8 @@ export default function BarGraphKillers({ killers, selectedStreamLink }) {
     );
     let tempoUnique = [];
     let tempoSeries = [];
+
+    // Separate Killer and number of deaths from those killer
     for (const [key, value] of Object.entries(sortKillers)) {
       const tempoKey = key;
       console.log(tempoKey);
@@ -75,10 +79,24 @@ export default function BarGraphKillers({ killers, selectedStreamLink }) {
   const options = {
     chart: {
       type: "bar",
-      height: 500,
+      height: 700,
       width: 1000,
-
+      foreColor: "#b9b9bb",
+      fontSize: "50px",
       fontFamily: "Elden Ring",
+    },
+    dataLabels: {
+      enabled: true,
+      textAnchor: "start",
+      style: {
+        colors: [`#FFF`],
+        textAlign: "center",
+        fontSize: "1.5em",
+      },
+      formatter: function (val, opt) {
+        return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val;
+      },
+      offsetX: 0,
     },
     plotOptions: {
       bar: {
@@ -90,16 +108,25 @@ export default function BarGraphKillers({ killers, selectedStreamLink }) {
         },
       },
     },
-    labels: killer,
-
-    yaxis: {
+    xaxis: {
       categories: killer,
+    },
+    yaxis: {
+      labels: {
+        show: false,
+      },
     },
   };
   return (
-    <div>
+    <div className="bar-graph-wrapper">
       {killer ? (
-        <ReactApexChart options={options} series={barSeries} type="bar" />
+        <ReactApexChart
+          options={options}
+          series={barSeries}
+          type="bar"
+          height="125%"
+          style={{ marginTop: "-25px" }}
+        />
       ) : null}
     </div>
   );
