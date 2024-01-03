@@ -3,7 +3,8 @@
   
     position: relative;
     display: flex;
-    width: 5%;
+    min-width: 100px;
+
     height: 3em;
     line-height: 3;
     background: #5c6664;

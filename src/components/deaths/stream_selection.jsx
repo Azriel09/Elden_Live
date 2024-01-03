@@ -46,7 +46,6 @@ export default function StreamSelection({
   return (
     <>
       <div className={`selection-container ${selectedTalent}`}>
-      
         <select
           className="selection"
           value={selectedStreamIndex}
