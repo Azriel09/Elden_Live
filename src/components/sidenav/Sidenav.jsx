@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { Outlet, useNavigate, Link } from "react-router-dom";
 import { IconButton } from "@mui/material";
@@ -17,7 +17,7 @@ import { useTalentState } from "../../context/talent-context";
 export default function Sidenav() {
   const [toggled, setToggled] = useState(false);
   const { setSelectedTalent } = useTalentState();
-  const navigate = useNavigate();
+
   const handleToggle = (e) => {
     setToggled(!toggled);
     setSelectedTalent(e.target.innerText);
@@ -46,15 +46,14 @@ export default function Sidenav() {
       <Sidebar
         onBackdropClick={() => setToggled(false)}
         toggled={toggled}
-        breakPoint="all"
-        width="20%"
+        breakPoint="always"
+        width={window.innerWidth < 391 ? "85%" : "300px"}
         style={{
           borderRightWidth: "0",
         }}
       >
         <Menu
           menuItemStyles={{
-          
             button: ({ level, active, disabled }) => {
               return {
                 color: "#b9b9bb",
@@ -75,7 +74,7 @@ export default function Sidenav() {
           <SubMenu label="Hololive EN">
             {iconsArray.map((Component, i) => (
               <MenuItem
-              key={Component}
+                key={Component}
                 onClick={(e) => handleToggle(e)}
                 icon={<Component />}
                 component={<Link to="/deaths" />}

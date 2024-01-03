@@ -95,7 +95,7 @@ export default function BarGraphKillers({ killers, selectedStreamLink }) {
       type: "bar",
       height: 700,
       width: 1000,
-      foreColor: "#b9b9bb",
+      foreColor: "#fff",
       fontSize: "50px",
       fontFamily: "Elden Ring",
     },
@@ -160,9 +160,9 @@ export default function BarGraphKillers({ killers, selectedStreamLink }) {
             marginTop: "100px",
             textShadow: `${chartLabelFontShadow()}`,
           },
-          ".apexcharts-data-labels": {
-            marginTop: "100px",
-          },
+          // ".apexcharts-data-labels": {
+          //   marginTop: "100px",
+          // },
           "#SvgjsG1551": {
             marginTop: "10px",
           },
