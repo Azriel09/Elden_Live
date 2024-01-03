@@ -8,9 +8,9 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 const queryClient = new QueryClient();
 function App() {
-  return (   <QueryClientProvider client={queryClient}>
-    <TalentProvider>
-   
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TalentProvider>
         <Routes>
           <Route path="/" element={<Sidenav />}>
             <Route index element={<Home />} />
@@ -18,9 +18,8 @@ function App() {
           </Route>
         </Routes>
         <ReactQueryDevtools initialIsOpen={true} position="top-right" />
-   
- 
-    </TalentProvider>   </QueryClientProvider>
+      </TalentProvider>{" "}
+    </QueryClientProvider>
   );
 }
 
