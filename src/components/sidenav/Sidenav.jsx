@@ -18,7 +18,7 @@ export default function Sidenav() {
   const [toggled, setToggled] = useState(false);
   const { setSelectedTalent } = useTalentState();
 
-  const handleToggle = (e) => {
+  const handleDeathsToggle = (e) => {
     setToggled(!toggled);
     setSelectedTalent(e.target.innerText);
   };
@@ -75,7 +75,7 @@ export default function Sidenav() {
             {iconsArray.map((Component, i) => (
               <MenuItem
                 key={Component}
-                onClick={(e) => handleToggle(e)}
+                onClick={(e) => handleDeathsToggle(e)}
                 icon={<Component />}
                 component={<Link to="/deaths" />}
               >
@@ -83,6 +83,14 @@ export default function Sidenav() {
               </MenuItem>
             ))}
           </SubMenu>
+          <MenuItem disabled></MenuItem>
+          <div className="nav-section">Death Timestamps</div>
+          <MenuItem
+            onClick={() => setToggled(!toggled)}
+            component={<Link to="/boss" />}
+          >
+            By Boss
+          </MenuItem>
         </Menu>
       </Sidebar>
       <div className="header">
