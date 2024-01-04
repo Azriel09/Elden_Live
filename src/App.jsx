@@ -17,7 +17,7 @@ function App() {
             <Route path="/deaths" element={<Deaths />} />
           </Route>
         </Routes>
-        <ReactQueryDevtools initialIsOpen={true} position="top-right" />
+        {/* <ReactQueryDevtools initialIsOpen={true} position="top-right" /> */}
       </TalentProvider>{" "}
     </QueryClientProvider>
   );
