@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Boss from "./pages/Boss";
 const queryClient = new QueryClient();
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Sidenav />}>
             <Route index element={<Home />} />
             <Route path="/deaths" element={<Deaths />} />
+            <Route path="/boss" element={<Boss />} />
           </Route>
         </Routes>
         {/* <ReactQueryDevtools initialIsOpen={true} position="top-right" /> */}

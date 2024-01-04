@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import "./player_styles.scss";
-import { Box, Slider } from "@mui/material";
+import { Slider, useTheme, useMediaQuery } from "@mui/material";
 import moment from "moment";
-import { array } from "prop-types";
+
 import BarGraphKillers from "./bar_graph";
 const sheetID = import.meta.env.VITE_SHEET_ID;
 const apiKeyYT = import.meta.env.VITE_YOUTUBE_API_KEY;
@@ -14,6 +14,7 @@ export default function PlayerTimestamps({
   selectedTalent,
   selectedStreamIndex,
 }) {
+  const theme = useTheme();
   const ref = React.createRef();
   const stream_link =
     selectedStreamLink.replace(
@@ -161,6 +162,9 @@ export default function PlayerTimestamps({
                   color: "rgba(0,0,0,0)",
                   // backgroundColor: "#323233",
                   width: "98%",
+                  [theme.breakpoints.down("410")]: {
+                    width: "94%",
+                  },
 
                   "& .MuiSlider-mark": {
                     backgroundColor: "red",
