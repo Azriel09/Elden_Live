@@ -138,8 +138,6 @@ export default function PlayerTimestamps({
               controls
               playing={true}
               defaultValue={0}
-              width="100%"
-              height="75%"
               className="player"
             />
             <Slider
