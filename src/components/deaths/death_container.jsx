@@ -26,7 +26,7 @@ export default function DeathsContainer() {
   if (data === "loading") {
     return <Loading />;
   }
-  console.log(data);
+
   return (
     <div className={`death-container bg-${selectedTalent}`}>
       {/* Applies class using talent name for custom styling like header color and background */}

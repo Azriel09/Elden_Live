@@ -28,8 +28,7 @@ import {
   Radagon,
   Beast,
 } from "./boss_images";
-export default function BossSelection() {
-  const [selectedBoss, setSelectedBoss] = useState("Tree Sentinel");
+export default function BossSelection({ setSelectedBoss }) {
   const bosslist = [
     "Tree Sentinel",
     "Margit",
