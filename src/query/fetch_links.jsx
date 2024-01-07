@@ -9,7 +9,6 @@ const GetData = () => {
         queryFn: () => {
           const data = fetch("http://localhost:8000/get_links").then((res) =>
             res.json(res).then((resdata) => {
-              console.log(resdata);
               return resdata;
             })
           );
@@ -26,7 +25,6 @@ const GetData = () => {
         queryFn: () => {
           const data = fetch("http://localhost:8000/get_deaths").then((res) =>
             res.json(res).then((resdata) => {
-              console.log(resdata);
               return resdata;
             })
           );
@@ -44,7 +42,7 @@ const GetData = () => {
   const { isLoading: isLoadingThings, data: deaths } = results[1];
   const isLoading = results.some((result) => result.isLoading);
   if (isLoading) {
-    return "loading"
+    return "loading";
   }
   return { links, deaths };
 };
