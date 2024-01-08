@@ -1,27 +1,24 @@
 import "./App.css";
 import Sidenav from "./components/sidenav/Sidenav";
-import { TalentProvider } from "./context/talent-context";
+
 import Deaths from "./pages/Deaths";
 import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
-import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { useTalentState } from "./context/talent-context";
 import Boss from "./pages/Boss";
-const queryClient = new QueryClient();
+
 function App() {
+  const { selectedTalent } = useTalentState();
   return (
-    <QueryClientProvider client={queryClient}>
-      <TalentProvider>
-        <Routes>
-          <Route path="/" element={<Sidenav />}>
-            <Route index element={<Home />} />
-            <Route path="/deaths" element={<Deaths />} />
-            <Route path="/boss" element={<Boss />} />
-          </Route>
-        </Routes>
-        {/* <ReactQueryDevtools initialIsOpen={true} position="top-right" /> */}
-      </TalentProvider>{" "}
-    </QueryClientProvider>
+    <div className={selectedTalent}>
+      <Routes>
+        <Route path="/" element={<Sidenav />}>
+          <Route index element={<Home />} />
+          <Route path="/deaths" element={<Deaths />} />
+          <Route path="/boss" element={<Boss />} />
+        </Route>
+      </Routes>
+    </div>
   );
 }
 
