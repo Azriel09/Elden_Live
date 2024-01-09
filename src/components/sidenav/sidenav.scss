@@ -1,4 +1,9 @@
 .sidebar-container {
+  box-shadow: inset 0 0 0 2000px rgb(5, 5, 5, 0.9);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 25%;
+  background-attachment: fixed;
 
   background-color: #0b110c;
 
@@ -27,4 +32,24 @@
       height: 200px;
     }
   }
+}
+
+.side-Amelia {
+  background-image: url('../../assets/bg/ame.jpg');
+}
+
+.side-Gawr {
+  background-image: url('../../assets/bg/gura.jpg');
+}
+.side-Mori {
+  background-image: url('../../assets/bg/calli.jpg');
+}
+.side-Ouro {
+  background-image: url('../../assets/bg/kronii.jpg');
+}
+.side-Irys {
+  background-image: url('../../assets/bg/irys.jpg');
+}
+.side-Ninomae {
+  background-image: url('../../assets/bg/ina.jpg');
 }
