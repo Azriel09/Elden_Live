@@ -16,7 +16,7 @@ import "./sidenav.scss";
 import { useTalentState } from "../../context/talent-context";
 export default function Sidenav() {
   const [toggled, setToggled] = useState(false);
-  const { setSelectedTalent } = useTalentState();
+  const { selectedTalent, setSelectedTalent } = useTalentState();
 
   const handleDeathsToggle = (e) => {
     setToggled(!toggled);
@@ -42,7 +42,7 @@ export default function Sidenav() {
   ];
 
   return (
-    <div className="sidebar-container">
+    <div className={`sidebar-container side-${selectedTalent}`}>
       <Sidebar
         onBackdropClick={() => setToggled(false)}
         toggled={toggled}
