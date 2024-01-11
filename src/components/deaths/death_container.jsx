@@ -6,7 +6,7 @@ import "./death-container.scss";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Loading from "../loading/loading";
-import GetData from "../../query/fetch_links";
+import GetData from "../../query/fetch_data";
 import PlayerTimestamps from "./player_timestamps";
 const apiKeyYT = import.meta.env.VITE_YOUTUBE_API_KEY;
 

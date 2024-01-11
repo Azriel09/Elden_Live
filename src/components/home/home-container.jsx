@@ -4,7 +4,7 @@ import HoloElden from "../../assets/holo-elden2.png";
 import { useTalentState } from "../../context/talent-context";
 import { useEffect } from "react";
 import Loading from "../loading/loading";
-import GetData from "../../query/fetch_links";
+import GetData from "../../query/fetch_data";
 export default function HomeContainer() {
   const { setSelectedTalent } = useTalentState();
   useEffect(() => {

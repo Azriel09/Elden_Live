@@ -1,4 +1,4 @@
-import GetData from "../../query/fetch_links";
+import GetData from "../../query/fetch_data";
 import Loading from "../loading/loading";
 import BossBarChart from "./boss_bar_graph";
 import BossSelection from "./boss_selection";
