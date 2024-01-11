@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
-import GetData from "../../query/fetch_links";
+import GetData from "../../query/fetch_data";
 import Loading from "../loading/loading";
 export default function BossBarChart({ selectedBoss, data }) {
   const [getCategories, setGenCategories] = useState([]);

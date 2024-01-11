@@ -1,5 +1,5 @@
 import { useQueries, useQuery, useQueryClient } from "@tanstack/react-query";
-
+const apiKeyData = import.meta.env.VITE_API_KEY;
 const GetData = () => {
   const queryClient = useQueryClient();
   const results = useQueries({
@@ -7,7 +7,11 @@ const GetData = () => {
       {
         queryKey: ["links"],
         queryFn: () => {
-          const data = fetch("http://localhost:8000/get_links").then((res) =>
+          const data = fetch("http://localhost:8000/get_links", {
+            headers: {
+              apiKey: apiKeyData,
+            },
+          }).then((res) =>
             res.json(res).then((resdata) => {
               return resdata;
             })
@@ -23,7 +27,11 @@ const GetData = () => {
       {
         queryKey: ["deaths"],
         queryFn: () => {
-          const data = fetch("http://localhost:8000/get_deaths").then((res) =>
+          const data = fetch("http://localhost:8000/get_deaths", {
+            headers: {
+              apiKey: apiKeyData,
+            },
+          }).then((res) =>
             res.json(res).then((resdata) => {
               return resdata;
             })

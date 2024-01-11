@@ -46,7 +46,7 @@ export default function Sidenav() {
       <Sidebar
         onBackdropClick={() => setToggled(false)}
         toggled={toggled}
-        breakPoint="always"
+        breakPoint="all"
         width={window.innerWidth < 391 ? "85%" : "300px"}
         style={{
           borderRightWidth: "0",
