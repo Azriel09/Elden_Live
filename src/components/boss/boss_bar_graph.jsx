@@ -21,12 +21,25 @@ export default function BossBarChart({ selectedBoss, data }) {
       return tempoObjects;
     });
     setAllData(allDeaths);
-    const filteredDeaths = {};
+    // const filteredDeaths = {};
     // allDeaths.map((data) => {
     //   Object.entries(data).map((key) => {
-    //     filteredDeaths[key] = key[1].filter(name => name.indexOf(selectedBoss) !== -1)
+    //     filteredDeaths[key] = key[1].filter(
+    //       (name) => name.indexOf(selectedBoss) !== -1
+    //     );
     //   });
     // });
+    const filteredDeaths = {};
+    // [{},{},{}, ...]
+    allDeaths.map((dataObject) => {
+      // [talent1, [cause of deaths1], talent2, [cause of deaths2], ...]
+      Object.entries(dataObject).map((dataArray) => {
+        const arrayOfDeaths = dataArray[1].filter(
+          (boss) => boss === selectedBoss
+        );
+        filteredDeaths[dataArray[0]] = arrayOfDeaths;
+      });
+    });
     console.log(filteredDeaths);
-  }, []);
+  }, [selectedBoss]);
 }

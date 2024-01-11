@@ -30,25 +30,25 @@ import {
 } from "./boss_images";
 export default function BossSelection({ setSelectedBoss }) {
   const bosslist = [
-    "Tree Sentinel",
-    "Margit",
-    "Godrick",
-    "Wolf of Radagon",
-    "Rennala",
-    "Radahn",
-    "Astel",
-    "Rykard",
-    "Godfrey Golden Shade",
-    "Morgott",
-    "Fire Giant",
-    "Malenia",
-    "Godskin Duo",
-    "Mohg",
-    "Maliketh",
-    "Gideon",
-    "Godfrey",
-    "Radagon",
-    "Elden Beast",
+    "Tree Sentinel Boss",
+    "Margit - the Fell Omen Boss",
+    "Godrick - the Grafted Boss",
+    "Red Wolf of Radagon Boss",
+    "Rennala - Queen of the Full Moon Boss",
+    "Starscourge Radahn Boss",
+    "Astel - Naturalborn of the Void Boss",
+    "Rykard - Lord of Blasphemy Boss",
+    "Godfrey - First Elden Lord (Golden Shade) Boss",
+    "Morgott - the Omen King Boss",
+    "Fire Giant Boss",
+    "Malenia - Blade of Miquella Boss",
+    "Godskin Duo Boss",
+    "Mohg - Lord of Blood Boss",
+    "Maliketh - the Black Blade",
+    "Sir Gideon Ofnir - The All Knowing Boss",
+    "Godfrey - First Elden Lord Boss",
+    "Radagon of the Golden Order Boss",
+    "Elden Beast Boss",
   ];
 
   // Sets the current selected boss
@@ -103,7 +103,6 @@ export default function BossSelection({ setSelectedBoss }) {
       sx={{
         width: "90vw",
         height: "50%",
-        backgroundColor: "#0b110c",
       }}
     >
       <Swiper
