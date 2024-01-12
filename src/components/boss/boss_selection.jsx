@@ -44,7 +44,7 @@ export default function BossSelection({ setSelectedBoss }) {
     "Malenia - Blade of Miquella Boss",
     "Godskin Duo Boss",
     "Mohg - Lord of Blood Boss",
-    "Maliketh - the Black Blade",
+    "Maliketh - The Black Blade Boss",
     "Sir Gideon Ofnir - The All Knowing Boss",
     "Godfrey - First Elden Lord Boss",
     "Radagon of the Golden Order Boss",
@@ -121,6 +121,7 @@ export default function BossSelection({ setSelectedBoss }) {
         centeredSlides={true}
       >
         {bosslist.map((boss, index) => {
+          const removedBossText = boss.replace("Boss", "");
           return (
             <SwiperSlide
               style={{
@@ -148,7 +149,7 @@ export default function BossSelection({ setSelectedBoss }) {
                       textAlign: "left",
                     }}
                   >
-                    {boss}
+                    {removedBossText}
                   </Typography>
                   {isActive ? (
                     <img
