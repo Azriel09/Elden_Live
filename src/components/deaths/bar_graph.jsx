@@ -9,6 +9,7 @@ export default function BarGraphKillers({ killers, selectedStreamLink }) {
 
   const { selectedTalent } = useTalentState();
   useEffect(() => {
+    // Counts the number of deaths per killer
     let tempObj = {};
     killers.map((killer) => {
       if (tempObj[killer]) {
