@@ -8,7 +8,7 @@
 
 .talent-boss-deaths-container{
     width: 100%;
-    background-color: pink;
+    margin-top: 20px;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -16,38 +16,30 @@
     align-items: center;
     justify-content: space-around;
     .talent-boss-data {
-        width: 300px;
-        height: 300px;
+        width: 200px;
+        height: 250px;
         background-color: gray;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        .talent-picture{
-            width: 150px;
-            height: 150px;
-            
+        border-radius: 20px;
+        .talent-image{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
             object-fit: contain;
-            background-repeat: no-repeat;
+            background-repeat: no-repeat;  
         }
-        .ame {
-            background-image: url("../../assets/talent-icons/ame.png");
-        }
-        .calli {
-            background-image: url("../../assets/talent-icons/calli.png");
-        }
-        .gura {
-            background-image: url("../../assets/talent-icons/gura.png");
-        }
-        .ina {
-            background-image: url("../../assets/talent-icons/ina.png");
-
-        }
-        .irys {
-            background-image: url("../../assets/talent-icons/irys.png");
-        }
-        .kronii {
-            background-image: url("../../assets/talent-icons/kronii.png");
+        .death-description {
+            text-align: center;
+            color: #fff;
+            .talent-name{
+                font-size: 150%;
+            }
+            .talent-deaths{
+                font-size: 300%;
+            }
         }
     }
 }

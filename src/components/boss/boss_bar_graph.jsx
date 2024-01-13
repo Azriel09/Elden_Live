@@ -56,7 +56,22 @@ export default function BossBarChart({ selectedBoss, data }) {
       fontFamily: "Elden Ring",
     },
   };
-  const talentList = ["ame", "calli", "gura", "ina", "irys", "kronii"];
+  const talentList = [
+    AmeIcon,
+    CalliIcon,
+    GuraIcon,
+    InaIcon,
+    IrysIcon,
+    KroniiIcon,
+  ];
+  const imgList = [
+    "./src/assets/talent-icons/ame.png",
+    "./src/assets/talent-icons/calli.png",
+    "./src/assets/talent-icons/gura.png",
+    "./src/assets/talent-icons/ina.png",
+    "./src/assets/talent-icons/irys.png",
+    "./src/assets/talent-icons/kronii.png",
+  ];
   return (
     <div className="talent-boss-deaths-container">
       {Object.entries(filteredData).map((data, index) => {
@@ -66,8 +81,12 @@ export default function BossBarChart({ selectedBoss, data }) {
         }
         return (
           <div className="talent-boss-data">
-            
-            <div className={`talent-picture ${talentList[index]}`}></div>
+            {/* <div className={`talent-picture ${talentList[index]}`}></div> */}
+            <img src={imgList[index]} className="talent-image" />
+            <div className="death-description">
+              <div className="talent-name">{data[0]}</div>
+              <div className="talent-deaths">{data[1].length}</div>
+            </div>
           </div>
         );
       })}

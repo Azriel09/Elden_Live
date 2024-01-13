@@ -84,7 +84,7 @@ export default function Sidenav() {
             ))}
           </SubMenu>
           <MenuItem disabled></MenuItem>
-          <div className="nav-section">Death Timestamps</div>
+          <div className="nav-section">Statistics</div>
           <MenuItem
             onClick={() => setToggled(!toggled)}
             component={<Link to="/boss" />}
