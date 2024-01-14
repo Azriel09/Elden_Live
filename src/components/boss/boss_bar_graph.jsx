@@ -90,6 +90,102 @@ export default function BossBarChart({ selectedBoss, data }) {
           </div>
         );
       })}
+      {Object.entries(filteredData).map((data, index) => {
+        console.log(data[0]);
+        if (data[1].length === 0) {
+          return;
+        }
+        return (
+          <div className="talent-boss-data">
+            {/* <div className={`talent-picture ${talentList[index]}`}></div> */}
+            <img src={imgList[index]} className="talent-image" />
+            <div className="death-description">
+              <div className="talent-name">{data[0]}</div>
+              <div className="talent-deaths">{data[1].length}</div>
+            </div>
+          </div>
+        );
+      })}
+      {Object.entries(filteredData).map((data, index) => {
+        console.log(data[0]);
+        if (data[1].length === 0) {
+          return;
+        }
+        return (
+          <div className="talent-boss-data">
+            {/* <div className={`talent-picture ${talentList[index]}`}></div> */}
+            <img src={imgList[index]} className="talent-image" />
+            <div className="death-description">
+              <div className="talent-name">{data[0]}</div>
+              <div className="talent-deaths">{data[1].length}</div>
+            </div>
+          </div>
+        );
+      })}
+      {Object.entries(filteredData).map((data, index) => {
+        console.log(data[0]);
+        if (data[1].length === 0) {
+          return;
+        }
+        return (
+          <div className="talent-boss-data">
+            {/* <div className={`talent-picture ${talentList[index]}`}></div> */}
+            <img src={imgList[index]} className="talent-image" />
+            <div className="death-description">
+              <div className="talent-name">{data[0]}</div>
+              <div className="talent-deaths">{data[1].length}</div>
+            </div>
+          </div>
+        );
+      })}
+      {Object.entries(filteredData).map((data, index) => {
+        console.log(data[0]);
+        if (data[1].length === 0) {
+          return;
+        }
+        return (
+          <div className="talent-boss-data">
+            {/* <div className={`talent-picture ${talentList[index]}`}></div> */}
+            <img src={imgList[index]} className="talent-image" />
+            <div className="death-description">
+              <div className="talent-name">{data[0]}</div>
+              <div className="talent-deaths">{data[1].length}</div>
+            </div>
+          </div>
+        );
+      })}
+      {Object.entries(filteredData).map((data, index) => {
+        console.log(data[0]);
+        if (data[1].length === 0) {
+          return;
+        }
+        return (
+          <div className="talent-boss-data">
+            {/* <div className={`talent-picture ${talentList[index]}`}></div> */}
+            <img src={imgList[index]} className="talent-image" />
+            <div className="death-description">
+              <div className="talent-name">{data[0]}</div>
+              <div className="talent-deaths">{data[1].length}</div>
+            </div>
+          </div>
+        );
+      })}
+      {Object.entries(filteredData).map((data, index) => {
+        console.log(data[0]);
+        if (data[1].length === 0) {
+          return;
+        }
+        return (
+          <div className="talent-boss-data">
+            {/* <div className={`talent-picture ${talentList[index]}`}></div> */}
+            <img src={imgList[index]} className="talent-image" />
+            <div className="death-description">
+              <div className="talent-name">{data[0]}</div>
+              <div className="talent-deaths">{data[1].length}</div>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
