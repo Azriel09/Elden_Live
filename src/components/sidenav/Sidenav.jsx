@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
-import { Outlet, useNavigate, Link } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
 import { IconButton } from "@mui/material";
 import {
   GuraIcon,
@@ -15,9 +15,11 @@ import CoverIcon from "../../assets/cover-icon.png";
 import "./sidenav.scss";
 import { useTalentState } from "../../context/talent-context";
 export default function Sidenav() {
+  const pathUrl = useLocation();
+  const currentLocation = pathUrl.pathname.split("/")[1];
   const [toggled, setToggled] = useState(false);
   const { selectedTalent, setSelectedTalent } = useTalentState();
-
+  console.log(currentLocation);
   const handleDeathsToggle = (e) => {
     setToggled(!toggled);
     setSelectedTalent(e.target.innerText);
@@ -42,7 +44,9 @@ export default function Sidenav() {
   ];
 
   return (
-    <div className={`sidebar-container side-${selectedTalent}`}>
+    <div
+      className={`sidebar-container side-${selectedTalent} side-${currentLocation}`}
+    >
       <Sidebar
         onBackdropClick={() => setToggled(false)}
         toggled={toggled}
