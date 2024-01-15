@@ -5,10 +5,12 @@
     justify-content: center;
     margin-top: -4vh;
 
-
 }
 
 .talent-boss-deaths-container{
+    max-height: 45vh;
+    overflow-y: scroll;
+
     width: 100%;
     margin-top: 20px;
     display: flex;

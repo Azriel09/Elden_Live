@@ -103,6 +103,8 @@ export default function BossSelection({ setSelectedBoss }) {
       sx={{
         width: "90vw",
         height: "50%",
+        marginTop: "7vh",
+        
       }}
     >
       <Swiper
