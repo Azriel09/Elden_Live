@@ -44,6 +44,8 @@ export default function Sidenav() {
   ];
 
   return (
+    // current location used for deaths page
+    // selectedtalent used for background image
     <div
       className={`sidebar-container side-${selectedTalent} side-${currentLocation}`}
     >
