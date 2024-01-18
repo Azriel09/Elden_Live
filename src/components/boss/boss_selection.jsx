@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Navigation, Thumbs } from "swiper";
+import { FreeMode, Navigation, Thumbs, Pagination } from "swiper";
 import "./boss_selection_styles.scss";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import "swiper/css/pagination";
 import {
   Tree,
   Margit,
@@ -103,13 +104,16 @@ export default function BossSelection({ setSelectedBoss }) {
       sx={{
         width: "90vw",
         height: "50%",
-        marginTop: "7vh",
-        
       }}
     >
       <Swiper
         style={{
           "--swiper-navigation-color": "white",
+          "--swiper-pagination-color": "#FFBA08",
+          "--swiper-pagination-bullet-size": "12px",
+
+          "--swiper-pagination-bullet-inactive-color": "#fff",
+          "--swiper-pagination-bullet-inactive-opacity": "1",
           width: "90%",
         }}
         onSlideChange={(e) => handleChange(e)}
@@ -118,7 +122,8 @@ export default function BossSelection({ setSelectedBoss }) {
         spaceBetween={10}
         navigation={true}
         loop={true}
-        modules={[FreeMode, Navigation, Thumbs]}
+        pagination={true}
+        modules={[FreeMode, Navigation, Thumbs, Pagination]}
         className="mySwiper2"
         centeredSlides={true}
       >
@@ -128,12 +133,9 @@ export default function BossSelection({ setSelectedBoss }) {
             <SwiperSlide
               style={{
                 backgroundColor: "rgba(0,0,0,0)",
-                width: "225px",
-                height: "375px",
-                position: "relative",
-                "&Active": {
-                  opacity: 1,
-                },
+                width: "11.5vw",
+                height: "40vh",
+
                 cursor: "pointer",
               }}
               key={index}
