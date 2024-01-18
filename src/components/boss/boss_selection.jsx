@@ -112,7 +112,7 @@ export default function BossSelection({ setSelectedBoss }) {
           "--swiper-pagination-color": "#FFBA08",
           "--swiper-pagination-bullet-size": "12px",
 
-          "--swiper-pagination-bullet-inactive-color": "#fff",
+          "--swiper-pagination-bullet-inactive-color": "gray",
           "--swiper-pagination-bullet-inactive-opacity": "1",
           width: "90%",
         }}
@@ -146,7 +146,7 @@ export default function BossSelection({ setSelectedBoss }) {
                   <Typography
                     sx={{
                       fontFamily: "Elden Ring",
-                      fontSize: "1.9em",
+                      fontSize: "2vw",
                       color: "lightgray",
                       position: "absolute",
                       textShadow: "3px 3px #000",
