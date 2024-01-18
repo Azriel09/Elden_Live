@@ -99,12 +99,31 @@ export default function BossSelection({ setSelectedBoss }) {
         return Beast();
     }
   };
+
+  function BossImageOnScreen() {
+    const width = window.innerWidth;
+
+    if (4000 >= width && width >= 1600) {
+      return 7;
+    } else if (1599 >= width && width >= 1400) {
+      return 6;
+    } else if (1399 >= width && width >= 1200) {
+      return 5;
+    } else if (1199 >= width && width >= 900) {
+      return 4;
+    } else if (899 >= width && width >= 750) {
+      return 3.5;
+    } else if (749 >= width) {
+      return 2;
+    }
+  }
   return (
     <Box
       sx={{
         width: "90vw",
         height: "50%",
       }}
+      className="boss-selection-box"
     >
       <Swiper
         style={{
@@ -117,7 +136,7 @@ export default function BossSelection({ setSelectedBoss }) {
           width: "90%",
         }}
         onSlideChange={(e) => handleChange(e)}
-        slidesPerView={"auto"}
+        slidesPerView={BossImageOnScreen()}
         slideToClickedSlide={true}
         spaceBetween={10}
         navigation={true}
@@ -135,7 +154,6 @@ export default function BossSelection({ setSelectedBoss }) {
                 backgroundColor: "rgba(0,0,0,0)",
                 width: "11.5vw",
                 height: "40vh",
-
                 cursor: "pointer",
               }}
               key={index}
@@ -146,12 +164,13 @@ export default function BossSelection({ setSelectedBoss }) {
                   <Typography
                     sx={{
                       fontFamily: "Elden Ring",
-                      fontSize: "2vw",
+
                       color: "lightgray",
                       position: "absolute",
                       textShadow: "3px 3px #000",
                       textAlign: "left",
                     }}
+                    className="boss-name-header"
                   >
                     {removedBossText}
                   </Typography>

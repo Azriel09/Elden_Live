@@ -45,7 +45,7 @@ export default function BossBarChart({ selectedBoss, data }) {
   }, [selectedBoss]);
 
   const barSeries = Object.entries(filteredData);
-  console.log(filteredData);
+
   const options = {
     chart: {
       type: "bar",
@@ -75,12 +75,11 @@ export default function BossBarChart({ selectedBoss, data }) {
   return (
     <div className="talent-boss-deaths-container">
       {Object.entries(filteredData).map((data, index) => {
-        console.log(data[0]);
         if (data[1].length === 0) {
           return;
         }
         return (
-          <div className="talent-boss-data">
+          <div className="talent-boss-data" key={index}>
             {/* <div className={`talent-picture ${talentList[index]}`}></div> */}
             <img src={imgList[index]} className="talent-image" />
             <div className="death-description">
