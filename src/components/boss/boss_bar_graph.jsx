@@ -10,11 +10,12 @@ import {
   IrysIcon,
   KroniiIcon,
 } from "../sidenav/icons";
-export default function BossBarChart({ selectedBoss, data }) {
+export default function BossBarChart({ selectedBoss, data, stats }) {
   const [getCategories, setGenCategories] = useState([]);
   const [allData, setAllData] = useState({});
   const [filteredData, setFilteredData] = useState({});
   //   Formats the data into {Talent: [all cause of deaths]}
+  console.log(stats);
   useEffect(() => {
     const allDeaths = Object.entries(data).map((deaths) => {
       const tempoObjects = {};
