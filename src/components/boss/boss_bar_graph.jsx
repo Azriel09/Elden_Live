@@ -44,8 +44,10 @@ export default function BossBarChart({ selectedBoss, data, stats }) {
       });
     });
     setFilteredData(filteredDeaths);
-    const filteredStats = stats.filter((stat) => stat.boss === selectedBoss);
-    console.log(filteredStats);
+    const filteredTalentStats = stats.filter(
+      (stat) => stat.boss === selectedBoss
+    );
+    setfilteredStats(filteredTalentStats);
   }, [selectedBoss]);
 
   const barSeries = Object.entries(filteredData);
@@ -85,10 +87,25 @@ export default function BossBarChart({ selectedBoss, data, stats }) {
         return (
           <div className="talent-boss-data" key={index}>
             {/* <div className={`talent-picture ${talentList[index]}`}></div> */}
-            <img src={imgList[index]} className="talent-image" />
-            <div className="death-description">
+            <div className="talent-boss-wrapper">
+              {" "}
+              <img src={imgList[index]} className="talent-image" />
               <div className="talent-name">{data[0]}</div>
+            </div>
+
+            <div className="death-description">
               <div className="talent-deaths">{data[1].length}</div>
+              {Object.entries(filteredStats[0].talent_stats).map((stat) => {
+                if (stat[0] === data[0]) {
+                  return Object.entries(stat[1]).map((data) => {
+                    return (
+                      <div>
+                        {data[0]}: {data[1]}
+                      </div>
+                    );
+                  });
+                }
+              })}
             </div>
           </div>
         );
