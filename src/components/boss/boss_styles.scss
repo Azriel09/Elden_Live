@@ -30,26 +30,44 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         margin-bottom: 10px;
-        .talent-image{
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: contain;
-            background-repeat: no-repeat;  
+        .talent-boss-wrapper {
+            text-align: center;
+            font-family: "Elden Ring";
+            .talent-deaths{
+                font-size: 200%;
+                
+            }
+            .talent-image{
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                object-fit: contain;
+                background-repeat: no-repeat;  
+            }
+            .talent-name{
+                font-size: 125%;
+                color: #fff;
+                letter-spacing: 2px;
+            }
         }
         .death-description {
             text-align: center;
             color: #fff;
             font-family: "Elden Ring";
-            .talent-name{
-                font-size: 125%;
-              
-                letter-spacing: 2px;
-            }
-            .talent-deaths{
-                font-size: 300%;
+            
+            .talent-stats{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                width: 150px;
+                width: 400px;
+                .talent-specific-stat{
+                    height: 50px;
+                  
+                }
             }
         }
     }
