@@ -91,21 +91,21 @@ export default function BossBarChart({ selectedBoss, data, stats }) {
               {" "}
               <img src={imgList[index]} className="talent-image" />
               <div className="talent-name">{data[0]}</div>
+              <div className="talent-deaths">DEATHS: {data[1].length}</div>
             </div>
 
             <div className="death-description">
-              <div className="talent-deaths">{data[1].length}</div>
-              {Object.entries(filteredStats[0].talent_stats).map((stat) => {
+              <div className="talent-stats">{Object.entries(filteredStats[0].talent_stats).map((stat) => {
                 if (stat[0] === data[0]) {
-                  return Object.entries(stat[1]).map((data) => {
+                  return Object.entries(stat[1]).map((data, i) => {
                     return (
-                      <div>
+                      <div className="talent-specific-stat" key={i}>
                         {data[0]}: {data[1]}
                       </div>
                     );
                   });
                 }
-              })}
+              })}</div>
             </div>
           </div>
         );
