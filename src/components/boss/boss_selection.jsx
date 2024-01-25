@@ -164,7 +164,7 @@ export default function BossSelection({ setSelectedBoss }) {
                   <Typography
                     sx={{
                       fontFamily: "Elden Ring",
-
+                      
                       color: "lightgray",
                       position: "absolute",
                       textShadow: "3px 3px #000",
