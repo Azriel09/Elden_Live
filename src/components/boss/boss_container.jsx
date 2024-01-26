@@ -6,11 +6,23 @@ import "./boss_styles.scss";
 import { useEffect, useState } from "react";
 
 export default function BossContainer() {
-  const [selectedBoss, setSelectedBoss] = useState("Tree Sentinel");
+  const [selectedBoss, setSelectedBoss] = useState("Tree Sentinel Boss");
   const data = GetData();
   if (data === "loading") {
     return <Loading />;
   }
+  const tempo = Object.values(data.bossStats).filter(
+    (boss) => boss.boss === selectedBoss
+  );
+  const filteredStats = Object.values(tempo).map((stat) => {
+    return Object.keys(stat.talent_stats).map((talent) => {
+      return { name: talent, ...stat.talent_stats[talent] };
+    });
+  });
+
+  // const tempo1 = Object.entries(data.bossStats).map((talent) => {
+  //   console.log(talent[1].boss);
+  // });
 
   return (
     <div className="boss-container">
@@ -18,7 +30,7 @@ export default function BossContainer() {
       <BossBarChart
         selectedBoss={selectedBoss}
         data={data.deaths}
-        stats={data.bossStats}
+        stats={filteredStats}
       />
     </div>
   );

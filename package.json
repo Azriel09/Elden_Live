@@ -18,6 +18,7 @@
     "@tanstack/react-query-devtools": "^5.12.2",
     "apexcharts": "^3.45.1",
     "moment": "^2.29.4",
+    "primereact": "^10.3.3",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
