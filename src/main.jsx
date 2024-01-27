@@ -5,13 +5,20 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { TalentProvider } from "./context/talent-context.jsx";
+import { PrimeReactProvider } from "primereact/api";
+
+import "primereact/resources/primereact.css";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <TalentProvider>
-          <App />
+          <PrimeReactProvider>
+            <App />
+          </PrimeReactProvider>
         </TalentProvider>
       </QueryClientProvider>
     </BrowserRouter>
