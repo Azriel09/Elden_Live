@@ -14,8 +14,77 @@ import { Slider } from "primereact/slider";
 import { Tag } from "primereact/tag";
 import { TriStateCheckbox } from "primereact/tristatecheckbox";
 
-export default function TalentStats({ selectedBoss, TalentStats }) {
-  const [filteredData, setFilteredData] = useState(null);
-  const [filters, setFilters] = useState(null);
+import "./table_styles.scss";
+export default function TalentStats({ selectedBoss, talentStats }) {
+  const [talents, setTalents] = useState();
+  useEffect(() => {
+    setTalents(talentStats);
+  }, [talentStats]);
 
+  return (
+    <div className="card">
+      <DataTable
+        value={talents[0]}
+        sortField="name"
+        sortOrder={-1}
+        tableStyle={{ minWidth: "50rem" }}
+      >
+        <Column field="name" header="Talent"></Column>
+        <Column
+          field="Level"
+          header="Level"
+          sortable
+          style={{ width: "20%" }}
+        ></Column>
+        <Column
+          field="Vigor"
+          header="Vigor"
+          sortable
+          style={{ width: "20%" }}
+        ></Column>
+        <Column
+          field="Mind"
+          header="Mind"
+          sortable
+          style={{ width: "20%" }}
+        ></Column>
+        <Column
+          field="Endurance"
+          header="Endurance"
+          sortable
+          style={{ width: "20%" }}
+        ></Column>
+        <Column
+          field="Strength"
+          header="Strength"
+          sortable
+          style={{ width: "20%" }}
+        ></Column>
+        <Column
+          field="Dexterity"
+          header="Dexterity"
+          sortable
+          style={{ width: "20%" }}
+        ></Column>
+        <Column
+          field="Intelligence"
+          header="Intelligence"
+          sortable
+          style={{ width: "20%" }}
+        ></Column>
+        <Column
+          field="Faith"
+          header="Faith"
+          sortable
+          style={{ width: "20%" }}
+        ></Column>
+        <Column
+          field="Arcane"
+          header="Arcane"
+          sortable
+          style={{ width: "20%" }}
+        ></Column>
+      </DataTable>
+    </div>
+  );
 }
