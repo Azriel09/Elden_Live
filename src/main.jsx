@@ -8,7 +8,7 @@ import { TalentProvider } from "./context/talent-context.jsx";
 import { PrimeReactProvider } from "primereact/api";
 
 import "primereact/resources/primereact.css";
-import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/themes/lara-dark-teal/theme.css";
 
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
