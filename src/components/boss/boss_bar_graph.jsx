@@ -46,7 +46,7 @@ export default function BossBarChart({ selectedBoss, data, stats }) {
       });
     });
     setFilteredData(filteredDeaths);
-    console.log(filteredDeaths);
+    
   }, [selectedBoss]);
 
   // const barSeries = Object.entries(filteredData);

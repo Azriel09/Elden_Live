@@ -22,16 +22,23 @@ export default function TalentStats({
 }) {
   const [overallData, setOverallData] = useState();
   useEffect(() => {
-    console.log(filteredDeaths);
-    Object.keys(filteredDeaths).map((talent) => {
-      console.log(talent);
-    });
-    const temp = Object.keys(filteredDeaths).map((talent) => {
-      if (filteredDeaths[talent].length >= 1) {
-        return talent;
-      } 
-    });
-    console.log(temp);
+    if (typeof filteredDeaths === "undefined") {
+      const temp = Object.keys(filteredDeaths).map((talent) => {
+        if (filteredDeaths[talent].length >= 1) {
+          return talent;
+        }
+      });
+      const temp1 = talentStats[0].map((data) => {
+        const tempObj = data;
+        if (filteredDeaths[data.name].length >= 1) {
+          tempObj["Deaths"] = filteredDeaths[data.name].length;
+        }
+        return tempObj;
+      });
+
+      setOverallData(temp1);
+    }
+    console.log(talentStats[0]);
   }, [selectedBoss]);
 
   return (
