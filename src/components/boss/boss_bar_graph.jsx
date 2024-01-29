@@ -19,38 +19,35 @@ export default function BossBarChart({ selectedBoss, data, stats }) {
   const [filteredStats, setfilteredStats] = useState({});
   //   Formats the data into {Talent: [all cause of deaths]}
 
-  // useEffect(() => {
-  //   const allDeaths = Object.entries(data).map((deaths) => {
-  //     const tempoObjects = {};
+  useEffect(() => {
+    const allDeaths = Object.entries(data).map((deaths) => {
+      const tempoObjects = {};
 
-  //     const deathsArr = [];
-  //     deaths[1].map((death) => {
-  //       deathsArr.push(Object.values(death.timestamps_killers));
-  //     });
-  //     const flattenedArr = deathsArr.flat();
-  //     tempoObjects[deaths[0]] = flattenedArr;
-  //     return tempoObjects;
-  //   });
-  //   setAllData(allDeaths);
+      const deathsArr = [];
+      deaths[1].map((death) => {
+        deathsArr.push(Object.values(death.timestamps_killers));
+      });
+      const flattenedArr = deathsArr.flat();
+      tempoObjects[deaths[0]] = flattenedArr;
+      return tempoObjects;
+    });
+    setAllData(allDeaths);
 
-  //   const filteredDeaths = {};
-  //   // [{},{},{}, ...]
-  //   allDeaths.map((dataObject) => {
-  //     // [talent1, [cause of deaths1], talent2, [cause of deaths2], ...]
-  //     Object.entries(dataObject).map((dataArray) => {
-  //       const arrayOfDeaths = dataArray[1].filter(
-  //         (boss) => boss === selectedBoss
-  //       );
-  //       // {talent: [filtered array]}
-  //       filteredDeaths[dataArray[0]] = arrayOfDeaths;
-  //     });
-  //   });
-  //   setFilteredData(filteredDeaths);
-  //   const filteredTalentStats = stats.filter(
-  //     (stat) => stat.boss === selectedBoss
-  //   );
-  //   setfilteredStats(filteredTalentStats);
-  // }, [selectedBoss]);
+    const filteredDeaths = {};
+    // [{},{},{}, ...]
+    allDeaths.map((dataObject) => {
+      // [talent1, [cause of deaths1], talent2, [cause of deaths2], ...]
+      Object.entries(dataObject).map((dataArray) => {
+        const arrayOfDeaths = dataArray[1].filter(
+          (boss) => boss === selectedBoss
+        );
+        // {talent: [filtered array]}
+        filteredDeaths[dataArray[0]] = arrayOfDeaths;
+      });
+    });
+    setFilteredData(filteredDeaths);
+    
+  }, [selectedBoss]);
 
   // const barSeries = Object.entries(filteredData);
 
@@ -87,7 +84,11 @@ export default function BossBarChart({ selectedBoss, data, stats }) {
 
   return (
     <div className="talent-boss-deaths-container">
-      <TalentStats selectedBoss={selectedBoss} talentStats={stats} />
+      <TalentStats
+        selectedBoss={selectedBoss}
+        talentStats={stats}
+        filteredDeaths={filteredData}
+      />
     </div>
   );
 }

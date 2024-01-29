@@ -15,16 +15,36 @@ import { Tag } from "primereact/tag";
 import { TriStateCheckbox } from "primereact/tristatecheckbox";
 
 import "./table_styles.scss";
-export default function TalentStats({ selectedBoss, talentStats }) {
-  const [talents, setTalents] = useState();
+export default function TalentStats({
+  selectedBoss,
+  talentStats,
+  filteredDeaths,
+}) {
+  const [overallData, setOverallData] = useState();
   useEffect(() => {
-    setTalents(talentStats);
-  }, [talentStats]);
+    if (typeof filteredDeaths === "undefined") {
+      const temp = Object.keys(filteredDeaths).map((talent) => {
+        if (filteredDeaths[talent].length >= 1) {
+          return talent;
+        }
+      });
+      const temp1 = talentStats[0].map((data) => {
+        const tempObj = data;
+        if (filteredDeaths[data.name].length >= 1) {
+          tempObj["Deaths"] = filteredDeaths[data.name].length;
+        }
+        return tempObj;
+      });
+
+      setOverallData(temp1);
+    }
+    console.log(talentStats[0]);
+  }, [selectedBoss]);
 
   return (
     <div className="card">
       <DataTable
-        value={talents[0]}
+        value={talentStats[0]}
         sortField="name"
         sortOrder={-1}
         tableStyle={{ minWidth: "50rem" }}
