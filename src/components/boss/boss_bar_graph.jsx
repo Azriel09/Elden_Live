@@ -50,9 +50,8 @@ export default function BossBarChart({ selectedBoss, data, stats }) {
     });
     setFilteredData(filteredDeaths);
     const temp = stats[0].map((stat, index) => {
-      if (filteredDeaths[stat.name].length >= 1) {
-        console.log(stat);
-        const deaths = filteredDeaths[stat.name].length;
+      if (filteredDeaths[stat.Talent].length >= 1) {
+        const deaths = filteredDeaths[stat.Talent].length;
         const tempObj = stat;
         tempObj["Deaths"] = deaths;
 

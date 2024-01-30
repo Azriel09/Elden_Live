@@ -16,7 +16,7 @@ export default function BossContainer() {
   );
   const filteredStats = Object.values(tempo).map((stat) => {
     return Object.keys(stat.talent_stats).map((talent) => {
-      return { name: talent, ...stat.talent_stats[talent] };
+      return { Talent: talent, ...stat.talent_stats[talent] };
     });
   });
 
