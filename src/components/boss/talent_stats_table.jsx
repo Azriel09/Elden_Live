@@ -35,10 +35,11 @@ export default function TalentStats({ talentStats }) {
   return (
     <div className="card">
       <DataTable
+        size="small"
         value={talentStats}
         sortField="Deaths"
         sortOrder={-1}
-        tableStyle={{ minWidth: "50rem" }}
+        tableStyle={{ width: "100rem" }}
       >
         {fieldList.map((field, index) => {
           return (
@@ -48,7 +49,7 @@ export default function TalentStats({ talentStats }) {
               header={field}
               sortable
               align="center"
-              style={{ width: "20%" }}
+              style={{ width: "10%" }}
             ></Column>
           );
         })}

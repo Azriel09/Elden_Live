@@ -100,6 +100,7 @@ export default function BossSelection({ setSelectedBoss }) {
     }
   };
 
+  // Mobile responsiveness
   function BossImageOnScreen() {
     const width = window.innerWidth;
 
@@ -128,7 +129,7 @@ export default function BossSelection({ setSelectedBoss }) {
       <Swiper
         style={{
           "--swiper-navigation-color": "white",
-          "--swiper-pagination-color": "#FFBA08",
+          "--swiper-pagination-color": "#55B0C6",
           "--swiper-pagination-bullet-size": "12px",
 
           "--swiper-pagination-bullet-inactive-color": "gray",
@@ -164,7 +165,7 @@ export default function BossSelection({ setSelectedBoss }) {
                   <Typography
                     sx={{
                       fontFamily: "Elden Ring",
-                      
+
                       color: "lightgray",
                       position: "absolute",
                       textShadow: "3px 3px #000",
