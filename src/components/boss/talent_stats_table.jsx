@@ -19,76 +19,39 @@ export default function TalentStats({ talentStats }) {
   if (!talentStats) {
     return null;
   }
-
+  const fieldList = [
+    "Talent",
+    "Deaths",
+    "Level",
+    "Vigor",
+    "Mind",
+    "Endurance",
+    "Strength",
+    "Dexterity",
+    "Intelligence",
+    "Faith",
+    "Arcane",
+  ];
   return (
     <div className="card">
       <DataTable
         value={talentStats}
-        sortField="name"
+        sortField="Deaths"
         sortOrder={-1}
         tableStyle={{ minWidth: "50rem" }}
       >
-        <Column field="name" header="Talent"></Column>
-        <Column
-          field="Deaths"
-          header="Deaths"
-          sortable
-          style={{ width: "20%" }}
-        ></Column>
-        <Column
-          field="Level"
-          header="Level"
-          sortable
-          style={{ width: "20%" }}
-        ></Column>
-        <Column
-          field="Vigor"
-          header="Vigor"
-          sortable
-          style={{ width: "20%" }}
-        ></Column>
-        <Column
-          field="Mind"
-          header="Mind"
-          sortable
-          style={{ width: "20%" }}
-        ></Column>
-        <Column
-          field="Endurance"
-          header="Endurance"
-          sortable
-          style={{ width: "20%" }}
-        ></Column>
-        <Column
-          field="Strength"
-          header="Strength"
-          sortable
-          style={{ width: "20%" }}
-        ></Column>
-        <Column
-          field="Dexterity"
-          header="Dexterity"
-          sortable
-          style={{ width: "20%" }}
-        ></Column>
-        <Column
-          field="Intelligence"
-          header="Intelligence"
-          sortable
-          style={{ width: "20%" }}
-        ></Column>
-        <Column
-          field="Faith"
-          header="Faith"
-          sortable
-          style={{ width: "20%" }}
-        ></Column>
-        <Column
-          field="Arcane"
-          header="Arcane"
-          sortable
-          style={{ width: "20%" }}
-        ></Column>
+        {fieldList.map((field, index) => {
+          return (
+            <Column
+              key={index}
+              field={field}
+              header={field}
+              sortable
+              align="center"
+              style={{ width: "20%" }}
+            ></Column>
+          );
+        })}
       </DataTable>
     </div>
   );
