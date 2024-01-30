@@ -33,27 +33,44 @@ export default function TalentStats({ talentStats }) {
     "Arcane",
   ];
   return (
-    <div className="card">
-      <DataTable
-        size="small"
-        value={talentStats}
-        sortField="Deaths"
-        sortOrder={-1}
-        tableStyle={{ width: "100rem" }}
-      >
-        {fieldList.map((field, index) => {
-          return (
-            <Column
-              key={index}
-              field={field}
-              header={field}
-              sortable
-              align="center"
-              style={{ width: "10%" }}
-            ></Column>
-          );
-        })}
-      </DataTable>
+    <div className="table-container">
+      <div className="card">
+        <DataTable
+          size="small"
+          scrollable
+          stripedRows
+          scrollHeight="200px"
+          value={talentStats}
+          sortOrder={1}
+        >
+          {fieldList.map((field, index) => {
+            if (index === 0) {
+              return (
+                <Column
+                  frozen
+                  key={index}
+                  field={field}
+                  header={field}
+                  sortable
+                  align="center"
+                  style={{ minWidth: "200px" }}
+                ></Column>
+              );
+            } else {
+              return (
+                <Column
+                  key={index}
+                  field={field}
+                  header={field}
+                  sortable
+                  align="center"
+                  style={{ minWidth: "100px" }}
+                ></Column>
+              );
+            }
+          })}
+        </DataTable>
+      </div>
     </div>
   );
 }
