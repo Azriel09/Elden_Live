@@ -14,10 +14,12 @@ import "primereact/resources/primereact.css";
 import TalentStats from "./talent_stats_table";
 export default function BossBarChart({ selectedBoss, data, stats }) {
   const [getCategories, setGenCategories] = useState([]);
-  const [allData, setAllData] = useState({});
+  const [overallData, setOverallData] = useState();
   const [filteredData, setFilteredData] = useState({});
   const [filteredStats, setfilteredStats] = useState({});
+
   //   Formats the data into {Talent: [all cause of deaths]}
+  // Compiles all the cause of deaths into a single array
 
   useEffect(() => {
     const allDeaths = Object.entries(data).map((deaths) => {
@@ -31,8 +33,9 @@ export default function BossBarChart({ selectedBoss, data, stats }) {
       tempoObjects[deaths[0]] = flattenedArr;
       return tempoObjects;
     });
-    setAllData(allDeaths);
+    setFilteredData(allDeaths);
 
+    // Filter the cause of deaths based on the selected boss
     const filteredDeaths = {};
     // [{},{},{}, ...]
     allDeaths.map((dataObject) => {
@@ -46,7 +49,16 @@ export default function BossBarChart({ selectedBoss, data, stats }) {
       });
     });
     setFilteredData(filteredDeaths);
-    
+    const temp = stats.map((stat, index) => {
+      if (filteredDeaths[stat[index].name].length >= 1) {
+        const deaths = filteredDeaths[stat[index].name].length;
+        const tempObj = stat;
+        tempObj[index]["Deaths"] = deaths;
+        console.log(tempObj);
+        return tempObj;
+      }
+    });
+    setOverallData(temp);
   }, [selectedBoss]);
 
   // const barSeries = Object.entries(filteredData);
@@ -78,15 +90,11 @@ export default function BossBarChart({ selectedBoss, data, stats }) {
     "./src/assets/talent-icons/kronii.png",
   ];
 
-  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  const [talents, setTalents] = useState(null);
-  const [filters, setFilters] = useState(null);
-
   return (
     <div className="talent-boss-deaths-container">
       <TalentStats
         selectedBoss={selectedBoss}
-        talentStats={stats}
+        talentStats={overallData}
         filteredDeaths={filteredData}
       />
     </div>
