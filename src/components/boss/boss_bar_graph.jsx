@@ -49,12 +49,13 @@ export default function BossBarChart({ selectedBoss, data, stats }) {
       });
     });
     setFilteredData(filteredDeaths);
-    const temp = stats.map((stat, index) => {
-      if (filteredDeaths[stat[index].name].length >= 1) {
-        const deaths = filteredDeaths[stat[index].name].length;
+    const temp = stats[0].map((stat, index) => {
+      if (filteredDeaths[stat.name].length >= 1) {
+        console.log(stat);
+        const deaths = filteredDeaths[stat.name].length;
         const tempObj = stat;
-        tempObj[index]["Deaths"] = deaths;
-        console.log(tempObj);
+        tempObj["Deaths"] = deaths;
+
         return tempObj;
       }
     });

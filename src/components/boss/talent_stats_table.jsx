@@ -23,7 +23,7 @@ export default function TalentStats({ talentStats }) {
   return (
     <div className="card">
       <DataTable
-        value={talentStats[0]}
+        value={talentStats}
         sortField="name"
         sortOrder={-1}
         tableStyle={{ minWidth: "50rem" }}
