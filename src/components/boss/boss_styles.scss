@@ -1,76 +1,8 @@
-.boss-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: -7vh;
 
-}
 
 .talent-boss-deaths-container{
     max-height: 40vh;
-    overflow-y: scroll;
 
-    width: 100%;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
-    height: 500px;
-    .talent-boss-data {
-        width: 400px;
-        height: 250px;
-        background: rgba( 255, 255, 255, 0.1 );
-        backdrop-filter: blur( 0px );
-        -webkit-backdrop-filter: blur( 0px );
-        border-radius: 10px;
-        border: 1px solid gray;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-evenly;
-        margin-bottom: 10px;
-        .talent-boss-wrapper {
-            text-align: center;
-            font-family: "Elden Ring";
-            .talent-deaths{
-                font-size: 200%;
-                
-            }
-            .talent-image{
-                width: 100px;
-                height: 100px;
-                border-radius: 50%;
-                object-fit: contain;
-                background-repeat: no-repeat;  
-            }
-            .talent-name{
-                font-size: 125%;
-                color: #fff;
-                letter-spacing: 2px;
-            }
-        }
-        .death-description {
-            text-align: center;
-            color: #fff;
-            font-family: "Elden Ring";
-            
-            .talent-stats{
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                flex-wrap: wrap;
-              
-                width: 300px;
-                .talent-specific-stat{
-                    height: 50px;
-                  
-                }
-            }
-        }
-    }
 }
 
 @media only screen and (max-width: 2560px) {
