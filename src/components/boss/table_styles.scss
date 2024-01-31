@@ -2,9 +2,10 @@
     overflow: hidden;
     .card {
         background: var(--surface-card);
-        padding: 2rem;
+        padding: 20px;
         border-radius: 10px;
         margin-bottom: 1rem;
-    
+        margin-top: 3vh;
+        width: 90vw;
     }
 }

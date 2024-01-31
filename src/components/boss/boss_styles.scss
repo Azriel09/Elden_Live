@@ -1,8 +1,13 @@
 
-
+.boss-container {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 .talent-boss-deaths-container{
     max-height: 40vh;
 
+}
 }
 
 @media only screen and (max-width: 2560px) {
