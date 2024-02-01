@@ -42,6 +42,7 @@ export default function TalentStats({ talentStats }) {
           scrollHeight="200px"
           value={talentStats}
           sortOrder={1}
+          style={{ minHeight: "40vh" }}
         >
           {fieldList.map((field, index) => {
             if (index === 0) {
