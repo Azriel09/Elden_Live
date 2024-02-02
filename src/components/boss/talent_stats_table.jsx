@@ -39,10 +39,10 @@ export default function TalentStats({ talentStats }) {
           size="small"
           scrollable
           stripedRows
-          scrollHeight="200px"
+          scrollHeight="35vh"
           value={talentStats}
           sortOrder={1}
-          style={{ minHeight: "40vh" }}
+          className="data-table"
         >
           {fieldList.map((field, index) => {
             if (index === 0) {

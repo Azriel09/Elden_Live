@@ -7,5 +7,20 @@
         margin-bottom: 1rem;
         margin-top: 3vh;
         width: 90vw;
+
+        .data-table{
+            min-height: 40vh;
+        }
+    }
+}
+
+@media only screen and (max-height: 930px){
+    .data-table {
+        min-height: 35vh !important;
+    }
+}
+@media only screen and (max-height: 725px){
+    .data-table {
+        min-height: 30vh !important;
     }
 }
