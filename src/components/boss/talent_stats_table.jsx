@@ -32,6 +32,14 @@ export default function TalentStats({ talentStats }) {
     "Faith",
     "Arcane",
   ];
+
+  const deathTemplate = (rowData) => {
+    return (
+      <div style={{ color: "#55b0c6", fontWeight: "bold" }}>
+        {rowData.Deaths}
+      </div>
+    );
+  };
   return (
     <div className="table-container">
       <div className="card">
@@ -55,6 +63,17 @@ export default function TalentStats({ talentStats }) {
                   sortable
                   align="center"
                   style={{ minWidth: "200px" }}
+                ></Column>
+              );
+            } else if (field === "Deaths") {
+              return (
+                <Column
+                  body={deathTemplate}
+                  key={index}
+                  field={field}
+                  header={field}
+                  sortable
+                  align="center"
                 ></Column>
               );
             } else {
