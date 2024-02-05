@@ -49,7 +49,8 @@ export default function TalentStats({ talentStats }) {
           stripedRows
           scrollHeight="35vh"
           value={talentStats}
-          sortOrder={1}
+          sortField="Deaths"
+          sortOrder={-1}
           className="data-table"
         >
           {fieldList.map((field, index) => {
