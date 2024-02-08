@@ -49,6 +49,8 @@ export default function BossBarChart({ selectedBoss, data, stats }) {
       });
     });
     setFilteredData(filteredDeaths);
+
+    // Combines the death data and stats
     const temp = stats[0].map((stat, index) => {
       if (filteredDeaths[stat.Talent].length >= 1) {
         const deaths = filteredDeaths[stat.Talent].length;

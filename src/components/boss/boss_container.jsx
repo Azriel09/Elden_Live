@@ -11,18 +11,17 @@ export default function BossContainer() {
   if (data === "loading") {
     return <Loading />;
   }
+
+  // Filter to only show stats according to selected boss
   const tempo = Object.values(data.bossStats).filter(
     (boss) => boss.boss === selectedBoss
   );
+
   const filteredStats = Object.values(tempo).map((stat) => {
     return Object.keys(stat.talent_stats).map((talent) => {
       return { Talent: talent, ...stat.talent_stats[talent] };
     });
   });
-
-  // const tempo1 = Object.entries(data.bossStats).map((talent) => {
-  //   console.log(talent[1].boss);
-  // });
 
   return (
     <div className="boss-container">

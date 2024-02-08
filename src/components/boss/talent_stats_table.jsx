@@ -33,6 +33,7 @@ export default function TalentStats({ talentStats }) {
     "Arcane",
   ];
 
+  // Death data font color
   const deathTemplate = (rowData) => {
     return (
       <div style={{ color: "#55b0c6", fontWeight: "bold" }}>
