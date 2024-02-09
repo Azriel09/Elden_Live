@@ -41,6 +41,11 @@ export default function TalentStats({ talentStats }) {
       </div>
     );
   };
+
+
+  const nameIconTemplate = () => {
+
+  }
   return (
     <div className="table-container">
       <div className="card">
