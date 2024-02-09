@@ -62,35 +62,7 @@ export default function BossBarChart({ selectedBoss, data, stats }) {
     });
     setOverallData(temp);
   }, [selectedBoss]);
-
-  // const barSeries = Object.entries(filteredData);
-
-  // const options = {
-  //   chart: {
-  //     type: "bar",
-  //     height: 400,
-  //     width: 1000,
-  //     foreColor: "#fff",
-  //     fontSize: "50px",
-  //     fontFamily: "Elden Ring",
-  //   },
-  // };
-  const talentList = [
-    AmeIcon,
-    CalliIcon,
-    GuraIcon,
-    InaIcon,
-    IrysIcon,
-    KroniiIcon,
-  ];
-  const imgList = [
-    "./src/assets/talent-icons/ame.png",
-    "./src/assets/talent-icons/calli.png",
-    "./src/assets/talent-icons/gura.png",
-    "./src/assets/talent-icons/ina.png",
-    "./src/assets/talent-icons/irys.png",
-    "./src/assets/talent-icons/kronii.png",
-  ];
+  const expandData = [];
 
   return (
     <div className="talent-boss-deaths-container">
