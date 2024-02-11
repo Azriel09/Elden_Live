@@ -13,7 +13,14 @@ import { MultiSelect } from "primereact/multiselect";
 import { Slider } from "primereact/slider";
 import { Tag } from "primereact/tag";
 import { TriStateCheckbox } from "primereact/tristatecheckbox";
-
+import {
+  GuraIcon,
+  AmeIcon,
+  CalliIcon,
+  KroniiIcon,
+  InaIcon,
+  IrysIcon,
+} from "../sidenav/icons";
 import "./table_styles.scss";
 export default function TalentStats({ talentStats }) {
   if (!talentStats) {
@@ -42,10 +49,68 @@ export default function TalentStats({ talentStats }) {
     );
   };
 
+  const nameIconTemplate = (rowData) => {
+    const Template = ({ children }) => {
+      return (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "5px",
+          }}
+        >
+          {children}
+        </div>
+      );
+    };
 
-  const nameIconTemplate = () => {
-
-  }
+    switch (rowData.Talent) {
+      case "Ninomae Ina'nis":
+        return (
+          <Template>
+            {<InaIcon />}
+            {rowData.Talent}
+          </Template>
+        );
+      case "Gawr Gura":
+        return (
+          <Template>
+            {<GuraIcon />}
+            {rowData.Talent}
+          </Template>
+        );
+      case "Mori Calliope":
+        return (
+          <Template>
+            {<CalliIcon />}
+            {rowData.Talent}
+          </Template>
+        );
+      case "Ouro Kronii":
+        return (
+          <Template>
+            {<KroniiIcon />}
+            {rowData.Talent}
+          </Template>
+        );
+      case "IRyS":
+        return (
+          <Template>
+            {<IrysIcon />}
+            {rowData.Talent}
+          </Template>
+        );
+      case "Amelia Watson":
+        return (
+          <Template>
+            {<AmeIcon />}
+            {rowData.Talent}
+          </Template>
+        );
+    }
+  };
   return (
     <div className="table-container">
       <div className="card">
@@ -69,6 +134,7 @@ export default function TalentStats({ talentStats }) {
                   header={field}
                   sortable
                   align="center"
+                  body={nameIconTemplate}
                   style={{ minWidth: "200px" }}
                 ></Column>
               );
