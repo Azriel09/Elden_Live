@@ -9,6 +9,7 @@ import {
   InaIcon,
   IrysIcon,
   KroniiIcon,
+  BibooIcon,
 } from "./icons";
 import CoverIcon from "../../assets/cover-icon.png";
 
@@ -32,6 +33,7 @@ export default function Sidenav() {
     CalliIcon,
     InaIcon,
     KroniiIcon,
+    BibooIcon,
   ];
 
   const names = [
@@ -41,6 +43,7 @@ export default function Sidenav() {
     "Mori Calliope",
     "Ninomae Ina'nis",
     "Ouro Kronii",
+    "Koseki Biboo",
   ];
 
   return (
