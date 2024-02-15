@@ -18,6 +18,7 @@ import NoelPic from "../../assets/talent-icons/noel.png";
 import AkirosePic from "../../assets/talent-icons/aki.png";
 import MoonaPic from "../../assets/talent-icons/moona.png";
 import ReinePic from "../../assets/talent-icons/reine.png";
+import BibooPic from "../../assets/talent-icons/biboo.jpg";
 
 export function GuraIcon() {
   return <img src={GuraPic} style={{ borderRadius: "50%", width: "35px" }} />;
@@ -25,6 +26,10 @@ export function GuraIcon() {
 
 export function AmeIcon() {
   return <img src={AmePic} style={{ borderRadius: "50%", width: "35px" }} />;
+}
+
+export function BibooIcon() {
+  return <img src={BibooPic} style={{ borderRadius: "50%", width: "35px" }} />;
 }
 
 export function CalliIcon() {

@@ -57,7 +57,7 @@ export default function TalentStats({ talentStats }) {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "flex-start",
             gap: "5px",
           }}
         >
