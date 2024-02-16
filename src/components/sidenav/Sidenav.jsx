@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { IconButton } from "@mui/material";
@@ -23,6 +23,7 @@ export default function Sidenav() {
   console.log(currentLocation);
   const handleDeathsToggle = (e) => {
     setToggled(!toggled);
+    console.log(e.target.innerText);
     setSelectedTalent(e.target.innerText);
   };
 

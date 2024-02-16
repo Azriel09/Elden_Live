@@ -41,7 +41,6 @@ export default function StreamSelection({
     setSelectedStreamLink(streamLinks[selectedTalent][value].links);
 
     setSelectedStreamIndex(value);
-    console.log(selectedStreamIndex);
   };
   return (
     <>
