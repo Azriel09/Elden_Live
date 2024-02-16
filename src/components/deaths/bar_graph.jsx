@@ -3,11 +3,13 @@ import { useTalentState } from "../../context/talent-context";
 import ReactApexChart from "react-apexcharts";
 import "./bar_graph_styles.scss";
 import { Box } from "@mui/material";
+import SheetFetcher from "./sheet_fetcher";
 export default function BarGraphKillers({ killers, selectedStreamLink }) {
   const [killer, setKiller] = useState([]);
   const [deaths, setDeaths] = useState([]);
 
   const { selectedTalent } = useTalentState();
+
   useEffect(() => {
     // Counts the number of deaths per killer
     let tempObj = {};
@@ -49,7 +51,7 @@ export default function BarGraphKillers({ killers, selectedStreamLink }) {
     // Separate Killer and number of deaths from those killer
     for (const [key, value] of Object.entries(sortKillers)) {
       const tempoKey = key;
-      console.log(tempoKey);
+
       if (tempoKey.includes("Boss")) {
         let tempoBoss = tempoKey.replace("Boss", "");
         tempoUnique.push(tempoBoss);
@@ -176,6 +178,7 @@ export default function BarGraphKillers({ killers, selectedStreamLink }) {
           height="150%"
           style={{ marginTop: "-25px" }}
         />
+        <SheetFetcher />
       </Box>
     </div>
   );
