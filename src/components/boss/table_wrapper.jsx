@@ -1,22 +1,10 @@
 import { useEffect, useState } from "react";
-import ReactApexChart from "react-apexcharts";
-import GetData from "../../query/fetch_data";
-import Loading from "../loading/loading";
-import {
-  GuraIcon,
-  AmeIcon,
-  CalliIcon,
-  InaIcon,
-  IrysIcon,
-  KroniiIcon,
-} from "../sidenav/icons";
+
 import "primereact/resources/primereact.css";
 import TalentStats from "./talent_stats_table";
-export default function BossBarChart({ selectedBoss, data, stats }) {
-  const [getCategories, setGenCategories] = useState([]);
+export default function TableWrapper({ selectedBoss, data, stats }) {
   const [overallData, setOverallData] = useState();
   const [filteredData, setFilteredData] = useState({});
-  const [filteredStats, setfilteredStats] = useState({});
 
   //   Formats the data into {Talent: [all cause of deaths]}
   // Compiles all the cause of deaths into a single array

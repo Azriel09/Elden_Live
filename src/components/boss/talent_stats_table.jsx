@@ -26,6 +26,8 @@ export default function TalentStats({ talentStats }) {
   if (!talentStats) {
     return null;
   }
+
+  // Column headers to map over
   const fieldList = [
     "Talent",
     "Deaths",
@@ -40,7 +42,7 @@ export default function TalentStats({ talentStats }) {
     "Arcane",
   ];
 
-  // Death data font color
+  // Deaths column data font color
   const deathTemplate = (rowData) => {
     return (
       <div style={{ color: "#55b0c6", fontWeight: "bold" }}>
@@ -111,6 +113,7 @@ export default function TalentStats({ talentStats }) {
         );
     }
   };
+
   return (
     <div className="table-container">
       <div className="card">
