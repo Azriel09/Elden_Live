@@ -1,9 +1,9 @@
 import GetData from "../../query/fetch_data";
 import Loading from "../loading/loading";
-import BossBarChart from "./boss_bar_graph";
 import BossSelection from "./boss_selection";
 import "./boss_styles.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import TableWrapper from "./table_wrapper";
 
 export default function BossContainer() {
   const [selectedBoss, setSelectedBoss] = useState("Tree Sentinel Boss");
@@ -26,7 +26,7 @@ export default function BossContainer() {
   return (
     <div className="boss-container">
       <BossSelection setSelectedBoss={setSelectedBoss} />
-      <BossBarChart
+      <TableWrapper
         selectedBoss={selectedBoss}
         data={data.deaths}
         stats={filteredStats}

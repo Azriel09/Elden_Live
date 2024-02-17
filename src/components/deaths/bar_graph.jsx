@@ -149,6 +149,9 @@ export default function BarGraphKillers({ killers, selectedStreamLink }) {
     },
     colors: "#49526B",
   };
+
+
+  
   return (
     <div className="bar-graph-wrapper">
       <Box
