@@ -101,6 +101,12 @@ export default function Sidenav() {
           >
             By Boss
           </MenuItem>
+          <MenuItem
+            onClick={() => setToggled(!toggled)}
+            component={<Link to="/talent" />}
+          >
+            By Talent
+          </MenuItem>
         </Menu>
       </Sidebar>
       <div className="header">

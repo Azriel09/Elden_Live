@@ -27,7 +27,7 @@
     "react-pro-sidebar": "^1.1.0-alpha.1",
     "react-router-dom": "^6.20.1",
     "sass": "^1.69.5",
-    "swiper": "^9.4.0"
+    "swiper": "^9.4.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
