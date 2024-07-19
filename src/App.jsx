@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
 import { useTalentState } from "./context/talent-context";
 import Boss from "./pages/Boss";
+import Talent from "./pages/Talent";
 
 function App() {
   const { selectedTalent } = useTalentState();
@@ -16,6 +17,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/deaths" element={<Deaths />} />
           <Route path="/boss" element={<Boss />} />
+          <Route path="/talent" element={<Talent />} />
         </Route>
       </Routes>
     </div>
