@@ -1,0 +1,16 @@
+.talent-tab-container {
+  
+    height: 100vh;
+    margin-top: 50px;
+    width: 20vw;
+    font-size: 3rem;
+}
+.talent-tab {
+    list-style-type: none;
+    font-family: "Elden Ring";
+    margin: 10px;
+}
+
+.talent-tab:hover{
+    cursor: pointer;
+}
