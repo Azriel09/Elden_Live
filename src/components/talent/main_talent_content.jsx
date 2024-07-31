@@ -36,7 +36,7 @@ export default function TalentMainContent({ data, selectedTab }) {
         return;
       case "holoMyth":
         setTalentLIst(holoGens["holoMyth"]);
-        setImgList["mythPNGs"];
+        setImgList(holoGens["mythPNGs"]);
         return;
       case "holoPromise":
         setTalentLIst(holoGens["holoPromise"]);
