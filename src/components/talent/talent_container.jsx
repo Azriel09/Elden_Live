@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GetData from "../../query/fetch_data";
 import Loading from "../loading/loading";
-import TalentTab from "./talent_gen";
+import TalentTab from "./talent_tab";
 export default function TalentContainer() {
   const [selectedTab, setSelectedTab] = useState("All");
 
@@ -10,10 +10,14 @@ export default function TalentContainer() {
     return <Loading />;
   }
 
+  const handleTabChange = (tab) => {
+    console.log(tab);
+    setSelectedTab(tab);
+  };
   return (
     <TalentTab
       data={data}
-      setSelectedTab={setSelectedTab}
+      handleTabChange={handleTabChange}
       selectedTab={selectedTab}
     />
   );
