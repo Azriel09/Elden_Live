@@ -14,13 +14,24 @@ export default function TalentTab({ data, selectedTab, handleTabChange }) {
         {tabList.map((tab, i) => {
           if (i === 0) {
             return (
-              <li className="talent-tab" key={i} onClick={() => handleTabChange(tab)}>
+              <li
+                className={`${
+                  selectedTab === tab ? "current-tab" : ""
+                } talent-tab`}
+                key={i}
+                onClick={() => handleTabChange(tab)}
+              >
                 {tab}
               </li>
             );
           } else {
             return (
-              <div className="talent-tab" key={i}>
+              <div
+                className={`${
+                  selectedTab === tab ? "current-tab" : ""
+                } talent-tab`}
+                key={i}
+              >
                 <img src={iconList[i]} className="tab-icon" />
                 <li onClick={() => handleTabChange(tab)}>{tab}</li>
               </div>
