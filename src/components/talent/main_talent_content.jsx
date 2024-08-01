@@ -7,9 +7,11 @@ import InaPNG from "../../assets/talent_cards/ina.png";
 import KroniiPNG from "../../assets/talent_cards/kronii.png";
 import BibooPNG from "../../assets/talent_cards/biboo.png";
 import IRySPNG from "../../assets/talent_cards/irys.png";
+import TalentStats from "./talent_stats";
 export default function TalentMainContent({ data, selectedTab }) {
   const [talentList, setTalentLIst] = useState([]);
   const [imgList, setImgList] = useState([]);
+  const [selectedTalent, setSelectedTalent] = useState("");
   const holoGens = {
     allPNGs: [AmePNG, CalliPNG, GuraPNG, InaPNG, IRySPNG, KroniiPNG, BibooPNG],
     holoMyth: [
@@ -24,6 +26,12 @@ export default function TalentMainContent({ data, selectedTab }) {
     holoAdvent: ["Koseki Biboo"],
     adventPNGs: [BibooPNG],
   };
+  const handleSelectingTalent = (talent) => {
+    console.log(talent);
+    setSelectedTalent(talent);
+  };
+
+  // For images of talents
   useEffect(() => {
     switch (selectedTab) {
       case "All":
@@ -49,16 +57,24 @@ export default function TalentMainContent({ data, selectedTab }) {
     }
   }, [selectedTab]);
 
-  return (
-    <div className="talent-main-content">
-      {talentList.map((talent, i) => {
-        return (
-          <div className="talent-card" key={i}>
-            <img src={imgList[i]} className="talent-img"></img>
-            <div className="talent-name">{talent}</div>
-          </div>
-        );
-      })}
-    </div>
-  );
+  if (!selectedTalent) {
+    return (
+      <div className="talent-main-content">
+        {talentList.map((talent, i) => {
+          return (
+            <div
+              className="talent-card"
+              key={i}
+              onClick={() => handleSelectingTalent(talent)}
+            >
+              <img src={imgList[i]} className="talent-img"></img>
+              <div className="talent-name">{talent}</div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  } else {
+    return <TalentStats data={data} selectedTalent={selectedTalent} setSelectedTalent={setSelectedTalent}/>;
+  }
 }
