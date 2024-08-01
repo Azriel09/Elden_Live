@@ -1,5 +1,5 @@
 import TalentMainContent from "./main_talent_content";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./talent.css";
 import MythPNG from "../../assets/gen_icons/myth_logo.png";
 import promisePNG from "../../assets/gen_icons/promise.png";
