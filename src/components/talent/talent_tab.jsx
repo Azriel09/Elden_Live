@@ -10,7 +10,7 @@ export default function TalentTab({ data, selectedTab, handleTabChange }) {
 
   return (
     <div className="talent-tab-container">
-      <ul>
+      <ul className="talent-tab-names">
         {tabList.map((tab, i) => {
           if (i === 0) {
             return (
