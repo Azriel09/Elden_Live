@@ -8,10 +8,16 @@ import KroniiPNG from "../../assets/talent_cards/kronii.png";
 import BibooPNG from "../../assets/talent_cards/biboo.png";
 import IRySPNG from "../../assets/talent_cards/irys.png";
 import TalentStats from "./talent_stats";
-export default function TalentMainContent({ data, selectedTab }) {
+export default function TalentMainContent({
+  data,
+  selectedTab,
+  selectedTalent,
+  handleSelectingTalent,
+  selectedData,
+}) {
   const [talentList, setTalentLIst] = useState([]);
   const [imgList, setImgList] = useState([]);
-  const [selectedTalent, setSelectedTalent] = useState("");
+
   const holoGens = {
     allPNGs: [AmePNG, CalliPNG, GuraPNG, InaPNG, IRySPNG, KroniiPNG, BibooPNG],
     holoMyth: [
@@ -25,10 +31,6 @@ export default function TalentMainContent({ data, selectedTab }) {
     promisePNGs: [IRySPNG, KroniiPNG],
     holoAdvent: ["Koseki Biboo"],
     adventPNGs: [BibooPNG],
-  };
-  const handleSelectingTalent = (talent) => {
-    console.log(talent);
-    setSelectedTalent(talent);
   };
 
   // For images of talents
@@ -75,6 +77,12 @@ export default function TalentMainContent({ data, selectedTab }) {
       </div>
     );
   } else {
-    return <TalentStats data={data} selectedTalent={selectedTalent} setSelectedTalent={setSelectedTalent}/>;
+    return (
+      <TalentStats
+        selectedData={selectedData}
+        selectedTalent={selectedTalent}
+        handleSelectingTalent={handleSelectingTalent}
+      />
+    );
   }
 }
