@@ -3,6 +3,7 @@ export default function TalentStats({
   selectedTalent,
   setSelectedTalent,
 }) {
+    
   return (
     <>
       <button onClick={() => setSelectedTalent("")}>Reset</button>
