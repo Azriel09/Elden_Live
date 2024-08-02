@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import "./talent_stats.css";
 export default function TalentStats({
   selectedData,
   selectedTalent,
@@ -10,7 +10,6 @@ export default function TalentStats({
   const [avgDeaths, setAvgDeaths] = useState();
   const [deathList, setDeathList] = useState({});
   useEffect(() => {
-    console.log(selectedData);
     setTotalStreams(selectedData.length);
     let totalD = 0;
 
@@ -54,11 +53,27 @@ export default function TalentStats({
         <h4>Total Deaths: {totalDeaths}</h4>
         <h4>Average Deaths/Stream: {avgDeaths}</h4>
         {Object.keys(deathList).map((death, i) => {
-          return (
-            <div key={i}>
-              {death}: {deathList[death]}
-            </div>
-          );
+          if (death.includes("Boss")) {
+            const removedText = death.replace("Boss", "");
+            return (
+              <div key={i} className="killer boss">
+                {removedText}: {deathList[death]}
+              </div>
+            );
+          } else if (death.includes("NPC")) {
+            const removedText = death.replace("NPC", "");
+            return (
+              <div key={i} className="killer NPC">
+                {removedText}: {deathList[death]}
+              </div>
+            );
+          } else {
+            return (
+              <div key={i}>
+                {death}: {deathList[death]}
+              </div>
+            );
+          }
         })}
       </div>
     </>

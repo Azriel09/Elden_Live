@@ -139,7 +139,7 @@ export default function BarGraphKillers({ killers, selectedStreamLink }) {
         shade: "dark",
         type: "horizontal",
         shadeIntensity: 0.5,
-        gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
+        gradientToColors: undefined,
         inverseColors: true,
         opacityFrom: 0.3,
         opacityTo: 1,
